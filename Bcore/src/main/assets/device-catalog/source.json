@@ -1,0 +1,17 @@
+{
+  "source": "android-devices-catalog.json",
+  "sourceSha256": "bd4a29ad2c229936ef4605517d079e670e1b39e1c737ec27c85df39b9a8813b3",
+  "records": 23727,
+  "phones": 13971,
+  "project": "https://github.com/hossain-khan/android-device-catalog-parser",
+  "upstreamCommit": "72f794d6869dfb76ed6432249de17244727686d9",
+  "upstreamPath": "catalog-data/android-devices-catalog.json",
+  "upstreamUrl": "https://raw.githubusercontent.com/hossain-khan/android-device-catalog-parser/72f794d6869dfb76ed6432249de17244727686d9/catalog-data/android-devices-catalog.json",
+  "catalogExportDate": "2026-08-13T10:56:49Z",
+  "bundledSha256": "4aa3f0297d3d5f0fcae8aae4fc4c954c63951caf67beb43395080464c7e8b1fa",
+  "upstreamRepositoryLicense": "Apache-2.0",
+  "licenseUrl": "https://raw.githubusercontent.com/hossain-khan/android-device-catalog-parser/72f794d6869dfb76ed6432249de17244727686d9/LICENSE",
+  "bundledLicense": "licenses/ANDROID-DEVICE-CATALOG-APACHE-2.0.txt",
+  "verifiedOn": "2026-11-08",
+  "provenance": "User-provided file matches the pinned upstream SHA-256; the bundled file differs only by JSON whitespace compression. Upstream describes the data as exported from Google Play Console. The repository declares Apache-2.0; this does not independently establish Google's underlying data redistribution terms or firmware accuracy."
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="account_choose_title">选择账号</string>
+    <string name="account_choose_message">为 %1$s 选择账号</string>
+    <string name="account_grant_message">允许 %1$s 使用所选账号？</string>
+    <string name="account_request_expired">请求已失效，请返回重试。</string>
+</resources>

@@ -1,0 +1,206 @@
+Bundled third-party license provenance
+Miuix and Backdrop were verified 2026-09-18 against their version tags and resolved Maven POMs.
+Their license texts are copied from the pinned commits below, with final-newline normalization only.
+These entries cover explicitly bundled third-party notices, not every NexBox dependency.
+The 2026-10-16 audit adds the directly declared runtime libraries and source/data
+references below. Versions are read from the current Gradle files and cached published
+POMs; this audit does not claim a newly resolved or built dependency graph.
+Core data/native notices also live in licenses/BCORE-SOURCES.txt, and the Xposed runtime
+has its own xposed-licenses/SOURCES.txt. Third-party licenses do not change to NexBox's
+root license when their code, data or binaries are included.
+
+Miuix 0.8.6
+Artifact: top.yukonga.miuix.kmp:miuix:0.8.6
+Android artifact: top.yukonga.miuix.kmp:miuix-android:0.8.6
+Project: https://github.com/compose-miuix-ui/miuix
+Tag: v0.8.6
+Commit: 61ab4eb0d4ee299fd723a81f8b27ea1eb2ad3e36
+License: Apache License, Version 2.0
+Upstream text: https://raw.githubusercontent.com/compose-miuix-ui/miuix/61ab4eb0d4ee299fd723a81f8b27ea1eb2ad3e36/LICENSE
+Bundled text: MIUIX-0.8.6-LICENSE.txt
+The POM identifies the developer as compose-miuix-ui. The upstream LICENSE contains
+the standard Apache appendix; its placeholder copyright line is preserved verbatim.
+The previous miuix-kotlin-multiplatform/miuix repository URL redirects to this project.
+
+AndroidLiquidGlass / Backdrop 1.0.6
+Artifact: io.github.kyant0:backdrop:1.0.6
+Project: https://github.com/Kyant0/AndroidLiquidGlass
+Tag: 1.0.6 (no v prefix)
+Commit: 896a94a3ade1cc1a940b92365f942a34971fecda
+License: Apache License, Version 2.0
+Copyright: Copyright 2025 Kyant
+Upstream text: https://raw.githubusercontent.com/Kyant0/AndroidLiquidGlass/896a94a3ade1cc1a940b92365f942a34971fecda/LICENSE
+Bundled text: BACKDROP-1.0.6-LICENSE.txt
+
+No root NOTICE file exists at either pinned source URL (HTTP 404 when verified).
+NexBox links the Miuix and Backdrop artifacts without modifying or copying their implementation sources.
+
+AndroidX Compose Material Icons 1.7.8 (37-icon source subset)
+Verified 2026-10-04 against the published source archive and Maven POM.
+Updated 2026-10-08: InsertDriveFile uses the upstream AutoMirrored variant.
+Artifact: androidx.compose.material:material-icons-extended-android:1.7.8
+Project: https://android.googlesource.com/platform/frameworks/support
+Source archive: https://dl.google.com/dl/android/maven2/androidx/compose/material/material-icons-extended-android/1.7.8/material-icons-extended-android-1.7.8-sources.jar
+Source archive SHA-256: 77b7e782a519a3e074fc91e09d59334ac1b815edd87d2e89c0c9ca7c95678e93
+Source root: commonMain/androidx/compose/material/icons/
+Local root: app/src/main/java/com/nexbox/app/ui/icons/
+Subset:
+  automirrored.filled: InsertDriveFile, Launch, Sort
+  filled: AcUnit, Android, Apps, BlurOn, Brightness6, BugReport, Casino, ChevronRight,
+    ClearAll, CloudSync, Code, DeleteOutline, Description, Download, Extension,
+    FilterList, Folder, FolderOpen, Groups, Map, Memory, MyLocation,
+    Palette, PhoneAndroid, PhotoLibrary, RadioButtonUnchecked, Security, Shuffle,
+    SimCard, Stop, SystemUpdate, Tune, UnfoldMore
+  outlined: StarBorder
+Changes: only the package prefix is changed to com.nexbox.app.ui.icons, with a
+per-file repackaging notice. Original vector paths, dimensions, mirroring, caching,
+annotations and copyright/license headers are preserved. Icons and materialIcon /
+materialPath helpers remain supplied by material-icons-core-android:1.7.8.
+Copyright: Copyright 2025 The Android Open Source Project
+License: Apache License, Version 2.0
+Upstream text: https://www.apache.org/licenses/LICENSE-2.0.txt
+Bundled text: ANDROIDX-MATERIAL-ICONS-1.7.8-LICENSE.txt (final-newline normalization only)
+The published source archive and AAR contain no NOTICE file.
+Only the listed sources and this license are bundled; the full source archive is not.
+
+Android Hidden Api Bypass 6.2
+Verified 2026-10-14 against the pinned source tag and Maven Central POM.
+Artifact: org.lsposed.hiddenapibypass:hiddenapibypass:6.2
+Project: https://github.com/LSPosed/AndroidHiddenApiBypass
+Tag: v6.2
+Commit: 4efc64fcada7df15e7b5ba068e774343b760270d
+Copyright: Copyright 2021-2025 LSPosed
+License: Apache License, Version 2.0
+Upstream text: https://raw.githubusercontent.com/LSPosed/AndroidHiddenApiBypass/4efc64fcada7df15e7b5ba068e774343b760270d/LICENSE
+Bundled text: ANDROID-HIDDEN-API-BYPASS-6.2-LICENSE.txt (final-newline normalization only)
+NexBox links the published library without copying or modifying its implementation.
+
+Shapes 1.2.0
+Artifact: io.github.kyant0:shapes:1.2.0
+Project: https://github.com/Kyant0/Shapes
+Tag: 1.2.0
+Commit: acf86616d1f3e911e95e2e624cd86438c1426a17
+Copyright: Copyright 2026 Kyant
+License: Apache-2.0
+Upstream text: https://raw.githubusercontent.com/Kyant0/Shapes/acf86616d1f3e911e95e2e624cd86438c1426a17/LICENSE
+Bundled text: SHAPES-1.2.0-LICENSE.txt
+Linked by the host for continuous-corner UI geometry and by Miuix/Backdrop.
+
+Coil 2.7.0
+Artifact: io.coil-kt:coil-compose:2.7.0
+Project: https://github.com/coil-kt/coil
+Tag: 2.7.0
+Commit: ce14e14bc9a25c6952e26e248aad75fbd2e9f9d0
+Copyright: Copyright 2023 Coil Contributors
+License: Apache-2.0
+Upstream text: https://raw.githubusercontent.com/coil-kt/coil/ce14e14bc9a25c6952e26e248aad75fbd2e9f9d0/LICENSE.txt
+Bundled text: COIL-2.7.0-LICENSE.txt
+The published coil-base 2.7.0 POM additionally declares OkHttp 4.12.0 and Okio 3.9.0:
+  https://github.com/square/okhttp (Apache-2.0)
+  https://github.com/square/okio (Apache-2.0)
+Upstream texts: parent-4.12.0/LICENSE.txt and parent-3.9.0/LICENSE.txt respectively.
+Bundled texts: OKHTTP-4.12.0-APACHE-2.0.txt, OKIO-3.9.0-APACHE-2.0.txt
+These are POM-declared transitive versions, not a new runtime resolution result.
+
+osmdroid 6.1.11 and map data
+Artifact: org.osmdroid:osmdroid-android:6.1.11
+Project: https://github.com/osmdroid/osmdroid
+Tag: osmdroid-parent-6.1.11
+Commit: 11de4fcc3f6d6f7609f5f5ee085733091b52ec9e
+License: Apache-2.0
+Upstream text: https://raw.githubusercontent.com/osmdroid/osmdroid/11de4fcc3f6d6f7609f5f5ee085733091b52ec9e/LICENSE
+Bundled text: OSMDROID-6.1.11-LICENSE.txt
+Map data: https://www.openstreetmap.org/copyright (Open Database License, ODbL 1.0)
+Tile services: https://tile.openstreetmap.de/ and https://tile.openstreetmap.org/
+The map retains its visible OpenStreetMap contributor attribution. The map library's
+Apache license does not replace the map-data or tile-service terms.
+
+FreeReflection 3.2.2
+Artifact: com.github.tiann:FreeReflection:3.2.2
+Project: https://github.com/tiann/FreeReflection
+Tag: 3.2.2
+Commit: 550e36e464539fe59fcc6e49c8f54bfbf376dbfe
+Copyright: Copyright (c) 2018 weishu
+License: MIT
+Upstream text: https://raw.githubusercontent.com/tiann/FreeReflection/550e36e464539fe59fcc6e49c8f54bfbf376dbfe/LICENSE
+Bundled text: FREE-REFLECTION-3.2.2-MIT.txt
+Linked as a published dependency by Bcore without a source replacement.
+
+BlackReflection
+Project: https://github.com/CodingGay/BlackReflection
+Local descendants: nexbox-reflection/ and compiler/
+License: Apache-2.0
+License source: https://raw.githubusercontent.com/CodingGay/BlackReflection/5eadef2dd322964b7fa61246ba58e02bbb864c8a/LICENSE
+Bundled text: BLACK-REFLECTION-APACHE-2.0.txt
+The license-only revision does not identify the original local source import, which
+was not recorded. NexBox repackages and maintains the reflection/annotation processor.
+Build-only dependencies: com.squareup:javapoet:1.13.0 (https://github.com/square/javapoet)
+and com.google.auto.service:auto-service:1.1.1 (https://github.com/google/auto), Apache-2.0.
+They generate/compile sources and are not declared Android runtime dependencies.
+
+Android_CN_OAID protocol reference
+Project: https://github.com/gzu-liyujiang/Android_CN_OAID
+Reference paths: aidl/ and library/src/main/java/com/github/gzuliyujiang/oaid/impl/
+Use: OEM Binder descriptors, transaction order and Provider URI/key conventions.
+The SDK and its implementation classes are not included; NexBox implements its own
+service/Provider wrappers. Firmware support, authorization and limit-tracking results
+remain the original OEM service's responsibility.
+Upstream license: Mulan-PSL-2.0
+License/notice revision: bd3b3df84b221e16d7c8c34fb905e03e03291faf
+Upstream texts: https://raw.githubusercontent.com/gzu-liyujiang/Android_CN_OAID/bd3b3df84b221e16d7c8c34fb905e03e03291faf/LICENSE
+                https://raw.githubusercontent.com/gzu-liyujiang/Android_CN_OAID/bd3b3df84b221e16d7c8c34fb905e03e03291faf/NOTICE
+Bundled texts: ANDROID-CN-OAID-MULAN-PSL-2.0.txt, ANDROID-CN-OAID-NOTICE.txt
+The notice revision identifies the retained legal texts, not an imported SDK revision.
+
+MaterialKolor / Material Color Utilities and Poko (Miuix transitive references)
+POM-declared artifacts: com.materialkolor:material-color-utilities-android:4.1.1,
+                       dev.drewhamilton.poko:poko-annotations-jvm:0.21.1
+Projects: https://github.com/jordond/materialkolor
+          https://github.com/material-foundation/material-color-utilities
+          https://github.com/drewhamilton/Poko
+MaterialKolor's root LICENSE is MIT, but its material-color-utilities module and the
+upstream Google implementation are Apache-2.0, as explained in the 4.1.1 README.
+The root POM's MIT entry alone must not be applied to Google's ported module sources.
+Bundled texts: MATERIALKOLOR-4.1.1-MIT.txt, MATERIAL-COLOR-UTILITIES-4.1.1-APACHE-2.0.txt,
+               POKO-0.21.1-APACHE-2.0.txt
+Upstream texts: https://raw.githubusercontent.com/jordond/materialkolor/4.1.1/LICENSE
+                https://raw.githubusercontent.com/jordond/materialkolor/4.1.1/material-color-utilities/src/commonMain/kotlin/com/materialkolor/LICENSE
+                https://raw.githubusercontent.com/drewhamilton/Poko/0.21.1/LICENSE
+
+Android platform, AndroidX, Material and Kotlin
+Projects: https://android.googlesource.com/platform/frameworks/base
+          https://android.googlesource.com/platform/frameworks/support
+          https://github.com/material-components/material-components-android
+          https://github.com/JetBrains/compose-multiplatform
+          https://github.com/JetBrains/compose-multiplatform-core
+          https://github.com/JetBrains/java-annotations
+          https://github.com/JetBrains/kotlin
+          https://github.com/Kotlin/kotlinx.coroutines
+Use: Android API/AIDL compatibility declarations, AndroidX/Compose UI/lifecycle/navigation,
+Material widgets, Kotlin runtime and kotlinx-coroutines-android:1.9.0.
+Licenses: Apache-2.0 for the listed components; original per-file AOSP notices remain.
+Declared versions: gradle/libs.versions.toml, build.gradle and each module build file.
+Kotlin 2.4.21 license revision: 9180ce6a7a7d3627f88b424717583f28ddca052d
+Coroutines 1.9.0 license revision: d8d6f8f37978b8e202d93b34f23f101df9c5724d
+Bundled texts: KOTLIN-2.4.21-APACHE-2.0.txt, KOTLINX-COROUTINES-1.9.0-APACHE-2.0.txt
+The shared Apache terms are also available in ANDROIDX-MATERIAL-ICONS-1.7.8-LICENSE.txt.
+This does not relicense separately licensed platform files or third-party subcomponents.
+Rechecked 2026-11-08: Miuix/Shapes POMs additionally declare JetBrains Compose
+Multiplatform artifacts, and Miuix declares org.jetbrains.androidx.navigationevent.
+Their AndroidX-derived implementations are maintained in compose-multiplatform-core.
+The kotlin-stdlib 2.4.21 POM declares org.jetbrains:annotations:13.0, maintained in
+java-annotations under Apache-2.0. The shared Apache terms listed above cover these
+entries; the selected transitive versions have not been newly resolved.
+The upstream Kotlin license/NOTICE.txt describes the compiler distribution, which
+is a build tool; it is not a runtime notice for the published standard-library JAR.
+
+UI and interaction references
+InstallerX Revived: https://github.com/wxxsfxyzm/InstallerX-Revived (upstream GPL-3.0)
+HyperCeiler: https://github.com/ReChronoRain/HyperCeiler (upstream AGPL-3.0)
+Used for visual/interaction comparison; the NexBox UI is implemented using its own
+components and the linked MD3/Miuix/Backdrop libraries. No dependency on either app
+is declared. Reference credits do not identify copied GPL/AGPL source files.
+
+Text copies added by the 2026-10-16 audit retain upstream contents with LF and
+final-newline normalization only. Known source-revision and underlying data-license
+uncertainties are recorded explicitly above and in BCORE-SOURCES.txt / the XP notices.

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navigate_back">Back</string>
+    <string name="app_list_permission_required_title">App list access is required</string>
+    <string name="app_list_permission_check_title">No cloneable apps were returned</string>
+    <string name="app_list_permission_settings">Check app permissions</string>
+    <string name="app_list_permission_settings_unavailable">Could not open app permissions. Find NexBox in system settings and check app list access.</string>
+    <string name="app_search_open">Search apps</string>
+    <string name="app_search_close">Close search</string>
+    <string name="install_not_confirmed">The installation could not be confirmed or the target profile is no longer available. Refresh and try again.</string>
+    <string name="fake_location_operation_failed">Location change incomplete. Please retry.</string>
+    <string name="map_tile_source">Map source</string>
+    <string name="map_source_osm_de">OpenStreetMap.de</string>
+    <string name="map_source_osm">OpenStreetMap.org</string>
+    <string name="map_source_custom">Custom</string>
+    <string name="map_source_help">HTTPS XYZ · WGS-84 · {z}/{x}/{y}</string>
+    <string name="map_source_url">Tile URL</string>
+    <string name="map_source_attribution">Attribution</string>
+    <string name="map_source_invalid">Invalid tile URL or attribution.</string>
+    <string name="map_source_save_failed">Could not save the map source. Please retry.</string>
+    <string name="map_tiles_unavailable">Map failed to load</string>
+    <string name="map_tiles_retry">Retry</string>
+</resources>

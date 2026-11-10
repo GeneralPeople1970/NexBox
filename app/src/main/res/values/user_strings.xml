@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_manage">Manage group</string>
+    <string name="user_name">Group name</string>
+    <string name="user_rename">Rename</string>
+    <string name="user_delete">Delete</string>
+    <string name="user_delete_warning">Delete %1$s? Apps, accounts and settings in this group will be permanently deleted. The shared gallery is kept.</string>
+    <string name="user_action_failed">Operation failed</string>
+    <string name="user_rename_saved">Name saved: %1$s</string>
+    <string name="user_rename_refresh_pending">Task name refresh is not fully confirmed. If old names remain, reopen the affected apps from NexBox.</string>
+    <string name="user_rename_refresh_pending_stopped">Some apps may have stopped. Task name refresh is not fully confirmed; reopen the affected apps from NexBox.</string>
+    <string name="user_rename_relaunch">Reopen the affected apps from NexBox when needed.</string>
+    <string name="clone_self_not_allowed">NexBox cannot clone itself</string>
+    <string name="app_clear_failed">Could not clear app data</string>
+    <string name="apk_clone_source_failed">Cannot read this package. Check that it is complete and compatible with this device.</string>
+    <string name="apk_clone_permission_denied">Access denied. Select the file again and allow access.</string>
+    <string name="apk_clone_user_unavailable">The target user is unavailable. Refresh and try again.</string>
+    <string name="clone_new_user_title">Create a new group?</string>
+    <string name="clone_create">Create clone</string>
+    <string name="clone_user_changed">Group changed</string>
+    <string name="apk_clone_import_complete">APK import complete</string>
+    <string name="apk_clone_import_summary">Installed %1$d · Skipped %2$d · Failed %3$d</string>
+    <string name="apk_clone_import_failure">Item %1$d: %2$s</string>
+    <string name="apk_clone_import_waiting">Waiting for confirmation</string>
+    <string name="apk_clone_import_busy">Import in progress</string>
+    <string name="apk_clone_import_duplicate_message">%1$s is already cloned in %2$s. Create a new group for another clone?</string>
+</resources>

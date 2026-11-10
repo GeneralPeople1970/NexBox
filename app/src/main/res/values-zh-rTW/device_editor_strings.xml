@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="device_more_parameters">更多參數</string>
+    <string name="device_brand">品牌</string>
+    <string name="device_code">裝置代號</string>
+    <string name="device_product">產品名稱</string>
+    <string name="device_fingerprint">韌體指紋</string>
+    <string name="device_serial">序號</string>
+    <string name="device_mac">MAC 位址</string>
+    <string name="device_invalid_serial">請輸入有效的序號</string>
+    <string name="device_invalid_imei">請輸入有效的 15 位 IMEI</string>
+    <string name="device_invalid_mac">請輸入有效的 MAC 位址</string>
+    <string name="device_invalid_oaid">請輸入有效的 OAID</string>
+    <string name="device_profile_load_failed">裝置參數載入失敗</string>
+    <string name="device_profile_save_failed">儲存失敗</string>
+    <string name="device_profile_random_failed">隨機失敗</string>
+    <string name="device_profile_retry">重試</string>
+    <string name="device_unsaved_title">儲存本次變更？</string>
+    <string name="device_save_and_leave">儲存並返回</string>
+    <string name="device_discard_changes">放棄變更</string>
+</resources>

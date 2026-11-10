@@ -1,0 +1,20 @@
+package com.nexbox.core.utils;
+
+import com.nexbox.core.utils.Slog;
+
+public class HackAppUtils {
+
+    
+    public static void enableQQLogOutput(String packageName, ClassLoader classLoader) {
+        if ("com.tencent.mobileqq".equals(packageName)) {
+            try {
+                Reflector.on("com.tencent.qphone.base.util.QLog", true, classLoader)
+                        .field("UIN_REPORTLOG_LEVEL")
+                        .set(100);
+            } catch (Exception e) {
+                Slog.e("HackAppUtils", "Container operation failed", e);
+                
+            }
+        }
+    }
+}

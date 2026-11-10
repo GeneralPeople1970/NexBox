@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nexbox_user_display_name">User %d</string>
+    <string name="nexbox_service_process" translatable="false">:nexbox_core</string>
+    <string name="app_icon">default icon</string>
+    <string name="nexbox_core_channel_name">Core services</string>
+    <string name="nexbox_core_channel_description">Keeps NexBox services running</string>
+    <string name="nexbox_core_notification_title">NexBox</string>
+    <string name="nexbox_core_notification_running">Core services are running</string>
+    <string name="nexbox_vpn_channel_name">VPN service</string>
+    <string name="nexbox_vpn_channel_description">Network access for NexBox apps</string>
+    <string name="nexbox_vpn_notification_title">NexBox VPN active</string>
+    <string name="nexbox_vpn_notification_running">Managing network access for sandbox apps</string>
+    <string name="nexbox_vpn_session">NexBox network access</string>
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="device_more_parameters">更多参数</string>
+    <string name="device_brand">品牌</string>
+    <string name="device_code">设备代号</string>
+    <string name="device_product">产品名称</string>
+    <string name="device_fingerprint">固件指纹</string>
+    <string name="device_serial">序列号</string>
+    <string name="device_mac">MAC 地址</string>
+    <string name="device_invalid_serial">请输入有效的序列号</string>
+    <string name="device_invalid_imei">请输入有效的 15 位 IMEI</string>
+    <string name="device_invalid_mac">请输入有效的 MAC 地址</string>
+    <string name="device_invalid_oaid">请输入有效的 OAID</string>
+    <string name="device_profile_load_failed">设备参数加载失败</string>
+    <string name="device_profile_save_failed">保存失败</string>
+    <string name="device_profile_random_failed">随机失败</string>
+    <string name="device_profile_retry">重试</string>
+    <string name="device_unsaved_title">保存本次修改？</string>
+    <string name="device_save_and_leave">保存并返回</string>
+    <string name="device_discard_changes">放弃修改</string>
+</resources>

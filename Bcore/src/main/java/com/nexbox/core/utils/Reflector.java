@@ -1,0 +1,435 @@
+package com.nexbox.core.utils;
+
+import com.nexbox.reflection.utils.MemberCache;
+
+import java.lang.reflect.AccessibleObject;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Member;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+
+
+public class Reflector {
+    public static final String LOG_TAG = "Reflector";
+
+    protected Class<?> mType;
+    protected Object mCaller;
+    protected Constructor<?> mConstructor;
+    protected Field mField;
+    protected Method mMethod;
+    private MemberCache mMembers;
+
+    private MemberCache members() {
+        MemberCache cache = mMembers;
+        if (cache == null || !cache.isCurrentFor(mType)) {
+            cache = MemberCache.forType(mType);
+            mMembers = cache;
+        }
+        return cache;
+    }
+
+    @SuppressWarnings("deprecation")
+    private static void accessible(AccessibleObject member) {
+        if (!member.isAccessible()) member.setAccessible(true);
+    }
+
+
+    public static Reflector on(String name) throws Exception {
+        return on(name, true, Reflector.class.getClassLoader());
+    }
+
+    public static Reflector on(String name, boolean initialize) throws Exception {
+        return on(name, initialize, Reflector.class.getClassLoader());
+    }
+
+    public static Reflector on(String name, boolean initialize, ClassLoader loader) throws Exception {
+        try {
+            return on(Class.forName(name, initialize, loader));
+        } catch (Throwable e) {
+            throw new Exception("Oops!", e);
+        }
+    }
+
+    public static Reflector on(Class<?> type) {
+        Reflector reflector = new Reflector();
+        reflector.mType = type;
+        return reflector;
+    }
+
+    public static Reflector with(Object caller) throws Exception {
+        return on(caller.getClass()).bind(caller);
+    }
+
+    protected Reflector() {
+
+    }
+
+    public Reflector constructor(Class<?>... parameterTypes) throws Exception {
+        try {
+            mConstructor = members().constructor(parameterTypes);
+            accessible(mConstructor);
+            mField = null;
+            mMethod = null;
+            return this;
+        } catch (Throwable e) {
+            throw new Exception("Oops!", e);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public <R> R newInstance(Object... initargs) throws Exception {
+        if (mConstructor == null) {
+            throw new Exception("Constructor was null!");
+        }
+        try {
+            accessible(mConstructor);
+            return (R) mConstructor.newInstance(initargs);
+        } catch (InvocationTargetException e) {
+            throw new Exception("Oops!", e.getTargetException());
+        } catch (Throwable e) {
+            throw new Exception("Oops!", e);
+        }
+    }
+
+    protected Object checked(Object caller) throws Exception {
+        if (caller == null || mType.isInstance(caller)) {
+            return caller;
+        }
+        throw new Exception("Caller [" + caller + "] is not a instance of type [" + mType + "]!");
+    }
+
+    protected void check(Object caller, Member member, String name) throws Exception {
+        if (member == null) {
+            throw new Exception(name + " was null!");
+        }
+        if (caller == null && !Modifier.isStatic(member.getModifiers())) {
+            throw new Exception("Need a caller!");
+        }
+        checked(caller);
+    }
+
+    public Reflector bind(Object caller) throws Exception {
+        mCaller = checked(caller);
+        return this;
+    }
+
+    public Reflector unbind() {
+        mCaller = null;
+        return this;
+    }
+
+    public Reflector field(String name) throws Exception {
+        try {
+            mField = findField(name);
+            accessible(mField);
+            mConstructor = null;
+            mMethod = null;
+            return this;
+        } catch (Throwable e) {
+            throw new Exception("Oops!", e);
+        }
+    }
+
+    protected Field findField(String name) throws NoSuchFieldException {
+        return members().field(name);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <R> R get() throws Exception {
+        return get(mCaller);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <R> R get(Object caller) throws Exception {
+        check(caller, mField, "Field");
+        try {
+            accessible(mField);
+            return (R) mField.get(caller);
+        } catch (Throwable e) {
+            throw new Exception("Oops!", e);
+        }
+    }
+
+    public Reflector set(Object value) throws Exception {
+        return set(mCaller, value);
+    }
+
+    public Reflector set(Object caller, Object value) throws Exception {
+        check(caller, mField, "Field");
+        try {
+            accessible(mField);
+            mField.set(caller, value);
+            return this;
+        } catch (Throwable e) {
+            throw new Exception("Oops!", e);
+        }
+    }
+
+    public Reflector method(String name, Class<?>... parameterTypes) throws Exception {
+        try {
+            mMethod = findMethod(name, parameterTypes);
+            accessible(mMethod);
+            mConstructor = null;
+            mField = null;
+            return this;
+        } catch (NoSuchMethodException e) {
+            throw new Exception("Oops!", e);
+        }
+    }
+
+    protected Method findMethod(String name, Class<?>... parameterTypes) throws NoSuchMethodException {
+        return members().method(name, parameterTypes);
+    }
+
+    public <R> R call(Object... args) throws Exception {
+        return callByCaller(mCaller, args);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <R> R callByCaller(Object caller, Object... args) throws Exception {
+        check(caller, mMethod, "Method");
+        try {
+            accessible(mMethod);
+            return (R) mMethod.invoke(caller, args);
+        } catch (InvocationTargetException e) {
+            throw new Exception("Oops!", e.getTargetException());
+        } catch (Throwable e) {
+            throw new Exception("Oops!", e);
+        }
+    }
+
+    public static class QuietReflector extends Reflector {
+
+        protected Throwable mIgnored;
+
+        public static QuietReflector on(String name) {
+            return on(name, true, QuietReflector.class.getClassLoader());
+        }
+
+        public static QuietReflector on(String name, boolean initialize) {
+            return on(name, initialize, QuietReflector.class.getClassLoader());
+        }
+
+        public static QuietReflector on(String name, boolean initialize, ClassLoader loader) {
+            Class<?> cls = null;
+            try {
+                cls = Class.forName(name, initialize, loader);
+                return on(cls, null);
+            } catch (Throwable e) {
+
+                return on(cls, e);
+            }
+        }
+
+        public static QuietReflector on(Class<?> type) {
+            return on(type, (type == null) ? new Exception("Type was null!") : null);
+        }
+
+        private static QuietReflector on(Class<?> type, Throwable ignored) {
+            QuietReflector reflector = new QuietReflector();
+            reflector.mType = type;
+            reflector.mIgnored = ignored;
+            return reflector;
+        }
+
+        public static QuietReflector with(Object caller) {
+            if (caller == null) {
+                return on((Class<?>) null);
+            }
+            return on(caller.getClass()).bind(caller);
+        }
+
+        protected QuietReflector() {
+
+        }
+
+        public Throwable getIgnored() {
+            return mIgnored;
+        }
+
+        protected boolean skip() {
+            return skipAlways() || mIgnored != null;
+        }
+
+        protected boolean skipAlways() {
+            return mType == null;
+        }
+
+        @Override
+        public QuietReflector constructor(Class<?>... parameterTypes) {
+            if (skipAlways()) {
+                return this;
+            }
+            try {
+                mIgnored = null;
+                super.constructor(parameterTypes);
+            } catch (Throwable e) {
+                mIgnored = e;
+
+            }
+            return this;
+        }
+
+        @Override
+        public <R> R newInstance(Object... initargs) {
+            if (skip()) {
+                return null;
+            }
+            try {
+                mIgnored = null;
+                return super.newInstance(initargs);
+            } catch (Throwable e) {
+                mIgnored = e;
+
+            }
+            return null;
+        }
+
+        @Override
+        public QuietReflector bind(Object obj) {
+            if (skipAlways()) {
+                return this;
+            }
+            try {
+                mIgnored = null;
+                super.bind(obj);
+            } catch (Throwable e) {
+                mIgnored = e;
+
+            }
+            return this;
+        }
+
+        @Override
+        public QuietReflector unbind() {
+            super.unbind();
+            return this;
+        }
+
+        @Override
+        public QuietReflector field(String name) {
+            if (skipAlways()) {
+                return this;
+            }
+            try {
+                mIgnored = null;
+                super.field(name);
+            } catch (Throwable e) {
+                mIgnored = e;
+
+            }
+            return this;
+        }
+
+        @Override
+        public <R> R get() {
+            if (skip()) {
+                return null;
+            }
+            try {
+                mIgnored = null;
+                return super.get();
+            } catch (Throwable e) {
+                mIgnored = e;
+
+            }
+            return null;
+        }
+
+        @Override
+        public <R> R get(Object caller) {
+            if (skip()) {
+                return null;
+            }
+            try {
+                mIgnored = null;
+                return super.get(caller);
+            } catch (Throwable e) {
+                mIgnored = e;
+
+            }
+            return null;
+        }
+
+        @Override
+        public QuietReflector set(Object value) {
+            if (skip()) {
+                return this;
+            }
+            try {
+                mIgnored = null;
+                super.set(value);
+            } catch (Throwable e) {
+                mIgnored = e;
+
+            }
+            return this;
+        }
+
+        @Override
+        public QuietReflector set(Object caller, Object value) {
+            if (skip()) {
+                return this;
+            }
+            try {
+                mIgnored = null;
+                super.set(caller, value);
+            } catch (Throwable e) {
+                mIgnored = e;
+
+            }
+            return this;
+        }
+
+        @Override
+        public QuietReflector method(String name, Class<?>... parameterTypes) {
+            if (skipAlways()) {
+                return this;
+            }
+            try {
+                mIgnored = null;
+                super.method(name, parameterTypes);
+            } catch (Throwable e) {
+                mIgnored = e;
+
+            }
+            return this;
+        }
+
+        @Override
+        public <R> R call(Object... args) {
+            if (skip()) {
+                return null;
+            }
+            try {
+                mIgnored = null;
+                return super.call(args);
+            } catch (Throwable e) {
+                mIgnored = e;
+
+            }
+            return null;
+        }
+
+        @Override
+        public <R> R callByCaller(Object caller, Object... args) {
+            if (skip()) {
+                return null;
+            }
+            try {
+                mIgnored = null;
+                return super.callByCaller(caller, args);
+            } catch (Throwable e) {
+                mIgnored = e;
+
+            }
+            return null;
+        }
+    }
+
+    public static Method findMethodByFirstName(Class<?> clazz, String methodName) {
+        return MemberCache.forType(clazz).firstDeclaredMethod(methodName);
+    }
+}

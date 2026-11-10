@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gallery_add_media">Add photos and videos</string>
+    <string name="gallery_empty_hint">No photos or videos</string>
+    <string name="gallery_load_failed">Could not load gallery</string>
+    <string name="gallery_preview_failed">Could not preview this media</string>
+    <string name="gallery_video_failed">Could not play this video</string>
+    <string name="gallery_selected_count">%1$d selected</string>
+    <string name="gallery_picker_selection_count">%1$d selected, up to %2$d</string>
+    <string name="gallery_select_all">Select all</string>
+    <string name="gallery_clear_selection">Deselect all</string>
+    <string name="gallery_select">Select</string>
+    <string name="gallery_selected">Selected</string>
+    <string name="gallery_export">Export</string>
+    <string name="gallery_export_success">Saved to device gallery</string>
+    <string name="gallery_export_partial">Some items could not be exported</string>
+    <string name="gallery_export_failed">Could not export media</string>
+    <string name="gallery_import_partial">Some items could not be imported</string>
+    <string name="gallery_delete_partial">Some items could not be deleted</string>
+    <string name="gallery_delete_count">Delete %1$d items?</string>
+    <string name="gallery_delete_message">Remove these items from all NexBox groups. Originals in your device gallery are kept.</string>
+    <string name="gallery_document_unavailable">This file selection is not supported yet</string>
+</resources>

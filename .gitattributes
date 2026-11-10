@@ -1,0 +1,30 @@
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+gradlew text eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+*.zip binary
+*.jar binary
+*.aar binary
+*.apk binary
+*.aab binary
+*.so binary
+*.a binary
+*.dex binary
+*.jks binary
+*.keystore binary
+
+Bcore/src/main/cpp/Dobby/** linguist-vendored
+Bcore/src/main/cpp/xdl/** linguist-vendored
+xposed-runtime/src/main/cpp/third_party/** linguist-vendored
+xposed-runtime/src/main/java/external/** linguist-vendored

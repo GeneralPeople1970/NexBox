@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="logs_title">日誌</string>
+    <string name="logs_entry_summary">記錄、ADB 與匯出</string>
+    <string name="logs_clear">清除日誌</string>
+    <string name="logs_export">匯出</string>
+    <string name="logs_empty">等待日誌</string>
+    <string name="logs_filter_all">全部等級</string>
+    <string name="logs_share_title">分享日誌</string>
+    <string name="logs_export_failed">無法匯出或分享日誌</string>
+    <string name="logs_recording_title">記錄日誌</string>
+    <string name="logs_adb_title">ADB 輸出</string>
+    <string name="logs_detailed_title">詳細日誌</string>
+    <string name="logs_no_warnings">暫無警告或錯誤</string>
+    <string name="logs_session_title">本次執行</string>
+    <string name="logs_recording_status">記錄中 · %1$d / %2$d 筆</string>
+    <string name="logs_stopped_status">記錄已關閉 · %1$d / %2$d 筆</string>
+    <string name="logs_filter_threshold">%1$s及以上</string>
+    <string name="logs_filter_action">篩選日誌等級</string>
+    <string name="logs_level_verbose">詳細</string>
+    <string name="logs_level_debug">除錯</string>
+    <string name="logs_level_information">資訊</string>
+    <string name="logs_level_warning">警告</string>
+    <string name="logs_level_error">錯誤</string>
+    <string name="logs_filtered_empty">暫無相符日誌</string>
+    <string name="logs_reset_filter">重設篩選</string>
+    <string name="logs_recording_off">日誌記錄未開啟</string>
+    <string name="logs_enable_recording">開啟記錄</string>
+    <string name="logs_exporting">匯出中…</string>
+    <string name="logs_clear_title">清除日誌？</string>
+    <string name="logs_clear_message">刪除全部日誌和本機當機記錄，無法復原。</string>
+    <string name="logs_settings_failed">無法儲存除錯設定</string>
+    <string name="logs_export_diagnostics">匯出診斷包</string>
+    <string name="logs_storage_error">日誌儲存異常：%1$s</string>
+    <string name="logs_search">搜尋日誌</string>
+    <string name="logs_search_empty">暫無相符日誌</string>
+</resources>

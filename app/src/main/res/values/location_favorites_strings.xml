@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="location_current">Current location</string>
+    <string name="location_cached">Last known location</string>
+    <string name="location_default">Default location</string>
+    <string name="location_approximate">Approximate location</string>
+    <string name="location_saved">Saved location</string>
+    <string name="location_locating">Finding your location</string>
+    <string name="location_favorites">Favorites</string>
+    <string name="location_favorites_empty">No favorites</string>
+    <string name="location_favorites_load_failed">Could not load favorites</string>
+    <string name="location_favorite_add">Save this place</string>
+    <string name="location_favorite_edit">Edit favorite</string>
+    <string name="location_favorite_edit_named">Edit %1$s</string>
+    <string name="location_favorite_name">Name</string>
+    <string name="location_favorite_default_name">Place %1$d</string>
+    <string name="location_favorite_delete">Delete</string>
+    <string name="location_favorite_delete_named">Delete %1$s</string>
+    <string name="location_favorite_delete_confirm">Delete “%1$s”?</string>
+    <string name="location_favorite_save_failed">Could not save changes. Please retry.</string>
+    <string name="location_save">Save</string>
+    <string name="location_retry">Retry</string>
+</resources>

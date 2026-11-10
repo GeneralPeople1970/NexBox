@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NexBox</string>
+    <string name="choose_app">选择应用</string>
+    <string name="empty_empty">空空如也</string>
+    <string name="permission_setting">权限设置</string>
+
+    <!-- 导航标签 -->
+    <string name="nav_home">主页</string>
+    <string name="nav_fake_location">虚拟定位</string>
+    <string name="nav_gms">谷歌服务</string>
+    <string name="nav_device_spoofing">设备伪装</string>
+    <string name="nav_gallery">相册管理</string>
+    <string name="nav_settings">设置</string>
+    <!-- 应用管理主页 -->
+    <string name="search_apps_hint">搜索名称</string>
+    <string name="user_prefix">用户 %d</string>
+    <!-- 虚拟定位 -->
+    <string name="fake_location">虚拟定位</string>
+    <string name="fake_location_pick">已选位置</string>
+    <!-- 设备伪装 -->
+    <string name="device_spoofing">设备伪装</string>
+    <string name="device_spoofing_android_id">Android ID</string>
+    <string name="device_spoofing_accept_change">保存修改</string>
+    <string name="device_spoofing_reset_to_default">恢复默认</string>
+    <string name="device_spoofing_esim">eSIM 支持</string>
+    <string name="device_spoofing_esim_summary">伪装成支持 eSIM 的设备</string>
+    <string name="device_spoofing_invalid_android_id">Android ID 必须为 16 位十六进制字符</string>
+    <string name="device_spoofing_fill_required">请填入设备厂商和型号</string>
+    <string name="device_spoofing_app_random_success">设备参数已更新</string>
+
+    <!-- 相册管理 -->
+    <string name="nexbox_gallery_title">相册管理</string>
+    <string name="nexbox_gallery_refresh">刷新</string>
+    <string name="nexbox_gallery_delete">删除</string>
+    <string name="nexbox_gallery_importing">正在导入媒体…</string>
+    <string name="nexbox_gallery_import_empty">未选择媒体文件</string>
+    <string name="nexbox_gallery_import_failed">导入失败</string>
+    <string name="nexbox_gallery_item_missing">该媒体文件已不存在</string>
+    <string name="nexbox_gallery_delete_failed">删除失败</string>
+    <string name="nexbox_gallery_share_label">发送至 NexBox 相册</string>
+    <string name="nexbox_gallery_video_badge">视频</string>
+
+    <!-- 谷歌服务 (GMS) 管理 -->
+    <string name="gms_manager">谷歌服务</string>
+    <string name="gms_state_enabled">已开启</string>
+    <string name="gms_state_disabled">未开启</string>
+    <string name="enable_gms">开启服务</string>
+    <string name="enable_gms_hint">为沙盒内的应用提供 Google Play 服务环境。</string>
+    <string name="enable_gms_warning">开启后可能影响原本正常的应用，已有数据不会被清除。</string>
+    <string name="disable_gms">关闭服务</string>
+    <string name="disable_gms_hint">清除当前 Google 服务环境？相关数据将被清空。</string>
+    <string name="wipe_gms">重置</string>
+    <string name="wipe_gms_hint">停止此分组内的 Google 服务，清除此分组的 Google 账号、登录令牌及相关组件数据。\n\n保留分组、已安装的应用及其他应用数据，不影响真机账号。重置后需在容器内重新登录。</string>
+    <string name="gms_reset_success">谷歌服务环境已重置</string>
+    <string name="gms_reset_failed">谷歌服务环境重置未完成，部分数据可能已清除。</string>
+    <!-- 应用管理与冷冻 -->
+    <string name="module_setting">Xposed 模块</string>
+    <string name="hide_root">隐藏 Root</string>
+    <string name="hide_root_summary">对沙盒应用隐藏 Root 痕迹</string>
+    <string name="done">确定</string>
+    <string name="cancel">取消</string>
+    <string name="is_stop">%s 已停止运行</string>
+    <string name="app_clear">清除应用数据</string>
+    <string name="app_clear_hint">是否清除 %s 的所有数据？</string>
+    <string name="app_remove">卸载应用</string>
+    <string name="app_shortcut">创建桌面快捷方式</string>
+    <string name="try_add_shortcut">已尝试添加到桌面</string>
+    <string name="add_shortcut_fail_msg">若添加失败，请前往系统设置，为 NexBox 开启“创建桌面快捷方式”的权限。</string>
+    <string name="no_reminders">不再提醒</string>
+    <string name="install_success">安装成功</string>
+    <string name="install_fail">安装失败</string>
+    <string name="apk_install_share_label">克隆到 NexBox</string>
+    <string name="apk_install_import_empty">未分享任何 APK 至 NexBox</string>
+    <string name="uninstall_success">卸载成功</string>
+    <string name="uninstall_fail">卸载失败</string>
+    <string name="uninstall_app_hint">确定卸载 %s？卸载后相关应用数据将被完全清除。</string>
+    <string name="clear_success">数据已清除</string>
+    <string name="start_fail">启动失败</string>
+    <string name="cannot_create_shortcut">当前桌面环境不支持创建快捷方式</string>
+    <!-- 高级与安全设置 -->
+    <string name="freeze_app_instantly_title">一键冷冻悬浮按钮</string>
+    <!-- 此前这两条叫 auto_freeze_toggle_*，button/message 被当作设置行的标题与副标题，
+         on/off 被 GMS 页当作「服务是否已开启」的状态文案——同一组文案被三个语义不同的
+         位置复用。现按用途拆开：设置行用 title/summary，GMS 状态用 gms_state_*。 -->
+    <string name="auto_freeze_title">应用冷冻</string>
+    <string name="auto_freeze_summary">离开 NexBox 时暂停后台应用</string>
+    <!-- 关于信息 -->
+    <string name="about_title">关于</string>
+
+    <!-- 应用选择器 / 克隆 -->
+    <string name="app_picker_title">创建克隆</string>
+    <string name="install_from_file">本地导入</string>
+    <string name="app_picker_empty">没有可克隆的应用</string>
+    <string name="search_no_result">没有匹配的应用</string>
+    <string name="installed_badge">已克隆</string>
+
+    <!-- 应用克隆 -->
+    <string name="empty_no_profile">暂无克隆应用</string>
+    <string name="load_failed">加载失败，请重试</string>
+
+    <!-- 虚拟定位 -->
+    <string name="fake_location_coords">经度：%1$s，纬度：%2$s</string>
+
+    <!-- Xposed 模块管理 -->
+    <string name="xp_refresh">刷新</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="xp_enable_named">啟用 %s</string>
+    <string name="xp_static_scope">此模組僅允許選擇開發者宣告的目標應用。</string>
+</resources>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NexBox</string>
+    <string name="choose_app">Choose App</string>
+    <string name="empty_empty">Empty</string>
+    <!-- Nav Labels -->
+    <string name="nav_home">Home</string>
+    <string name="nav_fake_location">Fake Location</string>
+    <string name="nav_gms">Google Services</string>
+    <string name="nav_device_spoofing">Device Spoofing</string>
+    <string name="nav_gallery">Gallery</string>
+    <string name="nav_settings">Settings</string>
+    <!-- App List -->
+    <string name="search_apps_hint">Search name</string>
+    <string name="user_prefix">User %d</string>
+    <string name="fake_location">Fake Location</string>
+    <string name="fake_location_pick">Selected location</string>
+    <string name="device_spoofing">Device Spoofing</string>
+    <string name="nexbox_gallery_title">Gallery</string>
+    <string name="nexbox_gallery_refresh">Refresh</string>
+    <string name="nexbox_gallery_delete">Delete</string>
+    <string name="nexbox_gallery_importing">Importing media…</string>
+    <string name="nexbox_gallery_import_empty">No media was shared to NexBox</string>
+    <string name="nexbox_gallery_import_failed">Import failed</string>
+    <string name="nexbox_gallery_item_missing">This media item is no longer available</string>
+    <string name="nexbox_gallery_delete_failed">Could not delete this media item</string>
+    <string name="nexbox_gallery_share_label">Send to NexBox Gallery</string>
+    <string name="nexbox_gallery_video_badge">VIDEO</string>
+    <string name="device_spoofing_android_id">Android ID</string>
+    <string name="device_spoofing_accept_change">Save Changes</string>
+    <string name="device_spoofing_reset_to_default">Restore defaults</string>
+    <string name="device_spoofing_esim">eSIM support</string>
+    <string name="device_spoofing_esim_summary">Pretend to be a device that supports eSIM</string>
+    <string name="device_spoofing_invalid_android_id">Android ID must be 16 hexadecimal characters</string>
+    <string name="device_spoofing_fill_required">Device Manufacturer and Device Model are required</string>
+    <string name="device_spoofing_app_random_success">Device parameters updated</string>
+    <string name="module_setting">Xposed Modules</string>
+    <string name="hide_root">Hide Root</string>
+    <string name="hide_root_summary">Hide root and debug traces</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+    <string name="permission_setting">Permissions</string>
+    <string name="no_reminders">No Reminders</string>
+    <string name="is_stop">%s stopped</string>
+    <string name="app_clear">Clear Data</string>
+
+    <string name="app_clear_hint">Clear Data for %s?</string>
+    <string name="app_remove">Uninstall App</string>
+    <string name="app_shortcut">Create Shortcut</string>
+    <string name="try_add_shortcut">Shortcut requested</string>
+    <string name="add_shortcut_fail_msg">If addition fails, please grant "create desktop shortcut" permission to NexBox in system settings.</string>
+    <string name="install_success">Installed Successfully</string>
+    <string name="install_fail">Installation failed</string>
+    <string name="apk_install_share_label">Clone to NexBox</string>
+    <string name="apk_install_import_empty">No APK was shared to NexBox</string>
+    <string name="uninstall_success">Uninstalled Successfully</string>
+    <string name="uninstall_fail">Uninstall failed</string>
+    <string name="uninstall_app_hint">Uninstall %s? Its app data will be deleted.</string>
+    <string name="clear_success">App data cleared</string>
+    <string name="start_fail">Launch failed</string>
+    <string name="cannot_create_shortcut">Your launcher does not support shortcuts</string>
+    <string name="freeze_app_instantly_title">Freeze App instantly</string>
+    <!-- 此前这两条的名字是 auto_freeze_toggle_*，其中 button/message 被当作设置行的标题与
+         副标题，on/off 被 GMS 页当作「服务是否已开启」的状态文案——同一组文案被三个语义
+         不同的位置复用。现按用途拆开：设置行用 title/summary，GMS 状态用 gms_state_*。 -->
+    <string name="auto_freeze_title">App freezing</string>
+    <string name="auto_freeze_summary">Pause background container apps when leaving NexBox</string>
+    <string name="gms_manager">Google Services</string>
+    <string name="gms_state_enabled">Enabled</string>
+    <string name="gms_state_disabled">Not enabled</string>
+    <string name="enable_gms">Enable Service</string>
+    <string name="enable_gms_hint">Provides a Google Play services environment to apps inside NexBox.</string>
+    <string name="enable_gms_warning">Enabling this may affect apps that already work. Existing data is kept.</string>
+    <string name="disable_gms">Disable Service</string>
+    <string name="disable_gms_hint">Clear the current Google services environment? Its data will be erased.</string>
+    <string name="wipe_gms">Reset</string>
+    <string name="wipe_gms_hint">Stops Google services in this group and clears its Google accounts, sign-in tokens, and related component data.\n\nThe group, installed apps, and other app data are kept. Accounts on your device are not affected. Sign in again inside NexBox after resetting.</string>
+    <string name="gms_reset_success">Google environment reset</string>
+    <string name="gms_reset_failed">Reset incomplete. Some data may already be cleared.</string>
+    <string name="about_title">About</string>
+
+    <!-- App picker / cloning -->
+    <string name="app_picker_title">Create clone</string>
+    <string name="install_from_file">Local import</string>
+    <string name="app_picker_empty">No app available to clone</string>
+    <string name="search_no_result">No app matches your search</string>
+    <string name="installed_badge">Cloned</string>
+
+    <!-- Profiles -->
+    <string name="empty_no_profile">No cloned apps</string>
+    <string name="load_failed">Could not load. Try again.</string>
+
+    <!-- Fake location -->
+    <string name="fake_location_coords">Longitude: %1$s, Latitude: %2$s</string>
+
+    <!-- Xposed module manager -->
+    <string name="xp_refresh">Refresh</string>
+</resources>

@@ -1,0 +1,53 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        // Built-in Kotlin uses AGP's KGP dependency; pin the compiler and Compose to one version.
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${libs.versions.kotlin.get()}"
+    }
+}
+
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.legacy.kapt) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.compose.compiler) apply false
+}
+
+ext {
+    // libxposed 102.0.0 declares minCompileSdk 37; target/min SDK remain unchanged.
+    compileSdkVersion = 37
+    targetSdkVersion = 35
+
+    minSdk = 31
+    versionCode = 100
+    versionName = "1.0"
+    xVersion = '1.0.0'
+    hiddenApiBypass = '6.2'
+}
+
+// nexboxAbis selects build targets without changing supported architectures.
+def supportedAbis = ['armeabi-v7a', 'arm64-v8a']
+def requestedAbis = providers.gradleProperty('nexboxAbis')
+        .orElse(supportedAbis.join(',')).get().split(',').collect { it.trim() }.unique()
+if (requestedAbis.isEmpty() || requestedAbis.any { !supportedAbis.contains(it) }) {
+    throw new GradleException('nexboxAbis must contain armeabi-v7a and/or arm64-v8a, separated by commas')
+}
+ext.nexboxAbis = requestedAbis
+
+// Keep local and CI failures actionable without enabling application logging.
+subprojects {
+    tasks.withType(org.gradle.api.tasks.testing.Test).configureEach {
+        testLogging {
+            events 'failed', 'skipped'
+            exceptionFormat 'full'
+            showCauses true
+            showStackTraces true
+        }
+        reports {
+            junitXml.required = true
+            html.required = true
+        }
+    }
+}

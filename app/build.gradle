@@ -1,0 +1,322 @@
+import com.android.build.api.artifact.ArtifactTransformationRequest
+import com.android.build.api.artifact.SingleArtifact
+import com.android.build.api.variant.BuiltArtifact
+import com.android.build.api.variant.BuiltArtifactsLoader
+import com.android.build.api.variant.FilterConfiguration
+import org.gradle.api.file.Directory
+import org.gradle.api.file.DirectoryProperty
+import org.gradle.api.provider.Property
+import org.gradle.api.provider.Provider
+import org.gradle.work.DisableCachingByDefault
+
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
+
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.compose.compiler)
+}
+
+// All local and CI variants use the pinned NexBox identity; there is no test-key fallback.
+if (providers.gradleProperty('nexboxTestSigning').orElse('false').get().toBoolean()) {
+    throw new GradleException('nexboxTestSigning is no longer supported; configure the shared NexBox signing key')
+}
+def keystoreProps = new Properties()
+def keystorePropsFile = rootProject.file("local.properties")
+if (keystorePropsFile.exists()) {
+    try {
+        keystorePropsFile.withInputStream { keystoreProps.load(it) }
+    } catch (Exception ignored) {
+        throw new GradleException('Unable to read local.properties for NexBox signing configuration')
+    }
+}
+def signingValue = { String name ->
+    def environmentValue = providers.environmentVariable(name).orNull
+    environmentValue != null ? environmentValue : keystoreProps.getProperty(name)
+}
+def nexboxStorePath = signingValue("NEXBOX_KEYSTORE_PATH")
+def nexboxStorePassword = signingValue("NEXBOX_KEYSTORE_PASSWORD")
+def nexboxKeyAlias = signingValue("NEXBOX_KEY_ALIAS")
+def nexboxKeyPassword = signingValue("NEXBOX_KEY_PASSWORD")
+if ([nexboxStorePath, nexboxStorePassword, nexboxKeyAlias, nexboxKeyPassword]
+        .any { it == null || it.trim().isEmpty() }) {
+    throw new GradleException('NexBox signing is required: configure all four NEXBOX signing values in the environment or local.properties')
+}
+
+def nexboxStoreFile
+try {
+    // Relative keystore paths are always relative to the repository root, not :app.
+    nexboxStoreFile = rootProject.file(nexboxStorePath)
+} catch (Exception ignored) {
+    throw new GradleException('Invalid NEXBOX_KEYSTORE_PATH; use a valid keystore file path')
+}
+if (!nexboxStoreFile.isFile() || !nexboxStoreFile.canRead()) {
+    throw new GradleException('NEXBOX_KEYSTORE_PATH must identify a readable PKCS12 keystore file')
+}
+
+def certificatePinFile = rootProject.file('gradle/signing-certificate.sha256')
+def certificatePinText
+try {
+    certificatePinText = certificatePinFile.getText('UTF-8')
+} catch (Exception ignored) {
+    throw new GradleException('Unable to read gradle/signing-certificate.sha256')
+}
+if (!(certificatePinText ==~ /[0-9a-f]{64}(?:\r?\n)?/)) {
+    throw new GradleException('gradle/signing-certificate.sha256 must contain one lowercase SHA-256 certificate digest')
+}
+def certificatePin = certificatePinText.trim()
+def storePasswordChars = nexboxStorePassword.toCharArray()
+def keyPasswordChars = nexboxKeyPassword.toCharArray()
+try {
+    def keystore = java.security.KeyStore.getInstance('PKCS12')
+    nexboxStoreFile.withInputStream { keystore.load(it, storePasswordChars) }
+    if (!keystore.isKeyEntry(nexboxKeyAlias) ||
+            !(keystore.getKey(nexboxKeyAlias, keyPasswordChars) instanceof java.security.PrivateKey)) {
+        throw new GradleException('NEXBOX_KEY_ALIAS must identify an accessible private key')
+    }
+    def certificate = keystore.getCertificate(nexboxKeyAlias)
+    if (!(certificate instanceof java.security.cert.X509Certificate)) {
+        throw new GradleException('The NexBox signing alias must have an X.509 certificate')
+    }
+    certificate.checkValidity()
+    def certificateDigest = java.util.HexFormat.of().formatHex(
+            java.security.MessageDigest.getInstance('SHA-256').digest(certificate.encoded))
+    if (certificateDigest != certificatePin) {
+        throw new GradleException('NexBox signing certificate does not match gradle/signing-certificate.sha256')
+    }
+} catch (GradleException failure) {
+    throw failure
+} catch (Exception ignored) {
+    // Do not include provider exception text or causes: they may contain credential details.
+    throw new GradleException('Unable to validate NexBox signing: check the PKCS12 keystore, passwords, alias and certificate validity')
+} finally {
+    java.util.Arrays.fill(storePasswordChars, (char) 0)
+    java.util.Arrays.fill(keyPasswordChars, (char) 0)
+}
+
+android {
+
+    namespace = 'com.nexbox.app'
+    compileSdk = rootProject.ext.compileSdkVersion
+    ndkVersion = '29.0.14206865'
+
+    defaultConfig {
+        applicationId = "com.nexbox.app"
+        manifestPlaceholders.nexboxAppLabel = "@string/app_name"
+        minSdk = rootProject.ext.minSdk
+        targetSdk = rootProject.ext.targetSdkVersion
+        versionCode = rootProject.ext.versionCode
+        versionName = rootProject.ext.versionName
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    splits {
+        abi {
+            enable = true
+            reset()
+            include(*rootProject.ext.nexboxAbis)
+            universalApk = rootProject.ext.nexboxAbis.size() > 1
+        }
+    }
+
+    signingConfigs {
+        nexbox {
+            storeFile = nexboxStoreFile
+            storeType = 'PKCS12'
+            storePassword = nexboxStorePassword
+            keyAlias = nexboxKeyAlias
+            keyPassword = nexboxKeyPassword
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig = signingConfigs.nexbox
+            minifyEnabled = false
+            shrinkResources = false
+            // Install diagnostic instrumentation beside a release-signed host, preserving its data.
+            if (providers.gradleProperty('nexboxLogTest').orNull == 'true') {
+                applicationIdSuffix = '.logtest'
+                versionNameSuffix = '-logs-test'
+                manifestPlaceholders.nexboxAppLabel = 'NexBox Logs Test'
+            }
+        }
+        release {
+            signingConfig = signingConfigs.nexbox
+            minifyEnabled = true
+            shrinkResources = true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    packaging {
+        jniLibs {
+            // The universal APK must not advertise an ABI unsupported by libnexbox.
+            excludes.addAll(['**/x86/**', '**/x86_64/**'])
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+    buildFeatures {
+        buildConfig = true
+        compose = true
+    }
+    sourceSets {
+        main {
+            res.srcDir(rootProject.file("branding/res"))
+        }
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+    }
+}
+
+androidComponents {
+    beforeVariants(selector().all()) { variantBuilder ->
+        // Retain both build types' unit-test components under AGP 9's new default.
+        variantBuilder.enableUnitTest = true
+    }
+    onVariants(selector().all()) { variant ->
+        def buildTypeName = variant.buildType
+        def variantTaskName = variant.name.capitalize()
+        def renameApks = tasks.register("rename${variantTaskName}NexBoxApks", RenameNexBoxApks) { task ->
+            task.buildTypeName.set(buildTypeName)
+        }
+        def transformation = variant.artifacts.use(renameApks)
+                .wiredWithDirectories({ it.inputDirectory }, { it.outputDirectory })
+                .toTransformMany(SingleArtifact.APK.INSTANCE)
+        renameApks.configure { task ->
+            task.transformationRequest.set(transformation)
+        }
+
+        def apkDirectory = variant.artifacts.get(SingleArtifact.APK.INSTANCE)
+        def artifactsLoader = variant.artifacts.getBuiltArtifactsLoader()
+        def deliveryDirectory = rootProject.file("build/${buildTypeName}")
+        tasks.matching { it.name == "assemble${variantTaskName}" }.configureEach { assembleTask ->
+            assembleTask.dependsOn(renameApks)
+            // Only publish delivery copies after this variant's assemble dependencies succeed.
+            assembleTask.doLast(new CopyNexBoxApks(apkDirectory, artifactsLoader, deliveryDirectory))
+        }
+    }
+    onVariants(selector().withBuildType('debug')) { variant ->
+        // Compress DEX without changing code or debug information; ART extracts it on installation.
+        variant.packaging.dex.useLegacyPackaging.set(true)
+    }
+}
+
+dependencies {
+    implementation project(':Bcore')
+    // Host module discovery directly reads ModuleMetadata; Bcore's implementation
+    // dependency supplies it at runtime, but does not expose it on this compile classpath.
+    implementation project(':xposed-runtime')
+    implementation libs.appcompat
+    // Miuix window dialogs require the NavigationEventDispatcherOwner provided by Activity 1.12+.
+    implementation libs.activity.compose
+    implementation libs.material
+    implementation libs.constraintlayout
+    implementation libs.core.ktx
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation "androidx.test:core:1.6.1"
+
+    implementation platform(libs.compose.bom)
+    implementation libs.compose.ui
+    implementation libs.compose.ui.graphics
+    implementation libs.compose.animation
+    implementation libs.compose.foundation
+    implementation libs.compose.runtime.livedata
+    implementation libs.compose.material3
+    implementation libs.compose.material.icons.core
+    implementation libs.miuix
+    // Dialogs use the same continuous-corner primitive directly; Miuix exposes it only at runtime.
+    implementation libs.shapes
+    implementation libs.backdrop
+    if (providers.gradleProperty('nexboxComposeTooling').orElse('false').get().toBoolean()) {
+        debugImplementation libs.compose.ui.tooling
+        debugImplementation libs.compose.ui.tooling.preview
+    }
+
+    implementation libs.navigation.compose
+
+    implementation libs.lifecycle.runtime.ktx
+    implementation libs.lifecycle.runtime.compose
+    implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.lifecycle.viewmodel.compose
+
+    implementation libs.coil.compose
+    implementation libs.kotlinx.coroutines.android
+
+    implementation 'org.osmdroid:osmdroid-android:6.1.11'
+}
+
+@DisableCachingByDefault(because = 'Relocates signed APKs and their AGP artifact metadata')
+abstract class RenameNexBoxApks extends DefaultTask {
+    @InputDirectory
+    @PathSensitive(PathSensitivity.RELATIVE)
+    abstract DirectoryProperty getInputDirectory()
+
+    @OutputDirectory
+    abstract DirectoryProperty getOutputDirectory()
+
+    @Input
+    abstract Property<String> getBuildTypeName()
+
+    @Internal
+    abstract Property<ArtifactTransformationRequest<RenameNexBoxApks>> getTransformationRequest()
+
+    @TaskAction
+    void renameApks() {
+        def destination = outputDirectory.get().asFile
+        Files.createDirectories(destination.toPath())
+        def outputNames = new HashSet<String>()
+        transformationRequest.get().submit(this, { BuiltArtifact artifact ->
+            if (artifact.versionName == null || artifact.versionName.isEmpty()) {
+                throw new GradleException('Cannot name a NexBox APK without version metadata')
+            }
+            def abi = artifact.filters.find {
+                it.filterType == FilterConfiguration.FilterType.ABI
+            }?.identifier ?: 'universal'
+            String name = "NexBox-${artifact.versionName}-${abi}-${buildTypeName.get()}.apk"
+            if (!outputNames.add(name)) {
+                throw new GradleException("Duplicate NexBox APK output name: ${name}")
+            }
+            def output = new File(destination, name)
+            Files.copy(new File(artifact.outputFile).toPath(), output.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING)
+            // AGP retains each split's filters/version and writes metadata for this returned file.
+            output
+        })
+    }
+}
+
+class CopyNexBoxApks implements Action<Task>, Serializable {
+    private final Provider<Directory> apkDirectory
+    private final BuiltArtifactsLoader artifactsLoader
+    private final File deliveryDirectory
+
+    CopyNexBoxApks(Provider<Directory> apkDirectory, BuiltArtifactsLoader artifactsLoader,
+                  File deliveryDirectory) {
+        this.apkDirectory = apkDirectory
+        this.artifactsLoader = artifactsLoader
+        this.deliveryDirectory = deliveryDirectory
+    }
+
+    @Override
+    void execute(Task task) {
+        def artifacts = artifactsLoader.load(apkDirectory.get())
+        if (artifacts == null || artifacts.elements.isEmpty()) {
+            throw new GradleException('Cannot copy NexBox APKs: artifact metadata is missing or empty')
+        }
+        Files.createDirectories(deliveryDirectory.toPath())
+        artifacts.elements.each { artifact ->
+            def source = new File(artifact.outputFile)
+            Files.copy(source.toPath(), new File(deliveryDirectory, source.name).toPath(),
+                    StandardCopyOption.REPLACE_EXISTING)
+        }
+    }
+}

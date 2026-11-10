@@ -1,0 +1,58 @@
+pluginManagement {
+    repositories {
+        // Hosted runners resolve from nearby canonical repositories first.
+        // Keep the existing mirror order for local development.
+        if (System.getenv('GITHUB_ACTIONS') == 'true') {
+            google()
+            mavenCentral()
+            gradlePluginPortal()
+        }
+        maven {
+            url = "https://jitpack.io"
+            content { includeGroupByRegex("com\\.github\\..*") }
+        }
+        maven { url = 'https://maven.aliyun.com/repository/releases' }
+        maven { url = 'https://maven.aliyun.com/repository/google' }
+        maven { url = 'https://maven.aliyun.com/repository/central' }
+        maven { url = 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url = 'https://maven.aliyun.com/repository/public' }
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        if (System.getenv('GITHUB_ACTIONS') == 'true') {
+            google()
+            mavenCentral()
+        }
+        maven {
+            url = "https://jitpack.io"
+            // Central/Google artifacts must not depend on JitPack availability.
+            content { includeGroupByRegex("com\\.github\\..*") }
+        }
+        maven { url = 'https://maven.aliyun.com/repository/releases' }
+        maven { url = 'https://maven.aliyun.com/repository/google' }
+        maven { url = 'https://maven.aliyun.com/repository/central' }
+        maven { url = 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url = 'https://maven.aliyun.com/repository/public' }
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "NexBox"
+
+include ':app'
+include ':nexbox-reflection'
+include ':compiler'
+include ':Bcore'
+include ':xposed-runtime'

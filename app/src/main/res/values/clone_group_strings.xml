@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="clone_action">Clone</string>
+    <string name="clone_success">Clone successful</string>
+    <string name="clone_source_unavailable">App source files are unavailable</string>
+    <string name="clone_sources_unavailable">Unavailable app sources: %1$d</string>
+    <string name="clone_source_missing">Source missing</string>
+    <string name="clone_source_review">Review</string>
+    <string name="clone_source_keep">Keep</string>
+    <string name="clone_source_delete">Delete</string>
+    <string name="clone_source_restore_hint">Install the original app, then restart NexBox to try restoring access.</string>
+    <string name="clone_choose_group">Choose a group</string>
+    <string name="clone_create_group">Create a new group</string>
+    <string name="app_action_open">Open app</string>
+    <string name="app_action_stop">Stop app</string>
+    <string name="app_action_random_device">Randomize device</string>
+    <string name="app_action_clear">Clear data</string>
+    <string name="app_action_uninstall">Uninstall app</string>
+</resources>

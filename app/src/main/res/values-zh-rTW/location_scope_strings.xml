@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="location_enable_simulation">開啟模擬</string>
+    <string name="location_disable_simulation">關閉模擬</string>
+    <string name="location_update_position">更新位置</string>
+    <string name="location_more">更多定位選項</string>
+    <string name="location_scope_title">定位作用域</string>
+    <string name="location_scope_required_title">未選擇應用程式</string>
+    <string name="location_scope_load_failed">定位作用域載入失敗</string>
+    <string name="location_scope_save_failed">定位作用域儲存失敗</string>
+    <string name="location_app_independent">獨立</string>
+    <string name="location_app_inherited">跟隨群組</string>
+    <string name="location_app_outside_scope">未加入作用域</string>
+    <string name="location_save_position">儲存位置</string>
+</resources>

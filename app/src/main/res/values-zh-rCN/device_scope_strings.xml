@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="device_manufacturer_label">设备厂商</string>
+    <string name="device_model_label">设备型号</string>
+    <string name="device_sim_cards">SIM卡</string>
+    <string name="device_random_scope">随机设备作用域</string>
+    <string name="device_profile_independent">独立</string>
+    <string name="device_esim_setting_failed">eSIM 设置失败</string>
+    <string name="device_scope_load_failed">无法加载设备作用域</string>
+    <string name="device_scope_save_failed">作用域保存失败</string>
+</resources>

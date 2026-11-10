@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace = 'com.nexbox.xposed.runtime'
+    // This runtime and its local tests are Java-only; do not add a Kotlin runtime dependency.
+    enableKotlin = false
+    compileSdk = rootProject.ext.compileSdkVersion
+    ndkVersion = '29.0.14206865'
+
+    defaultConfig {
+        minSdk = rootProject.ext.minSdk
+        consumerProguardFiles 'consumer-rules.pro'
+        testInstrumentationRunner = 'androidx.test.runner.AndroidJUnitRunner'
+        ndk { abiFilters.addAll(rootProject.ext.nexboxAbis) }
+        externalNativeBuild {
+            cmake {
+                arguments.addAll(['-DANDROID_STL=c++_shared',
+                                  '-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON',
+                                  "-DNEXBOX_CORE_DIR=${rootProject.file('Bcore/src/main/cpp').absolutePath.replace('\\', '/')}".toString()])
+                targets.addAll(['nexbox_xposed', 'lsplant'])
+            }
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path = file('src/main/cpp/CMakeLists.txt')
+            version = '3.31.6'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+    testOptions { unitTests.returnDefaultValues = true }
+    buildFeatures { buildConfig = false }
+}
+
+androidComponents {
+    beforeVariants(selector().all()) { variantBuilder ->
+        variantBuilder.enableUnitTest = true
+    }
+}
+
+dependencies {
+    // Framework implementation: ship the actual public ABI, not hand-written API stubs.
+    api 'io.github.libxposed:api:102.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test:runner:1.6.2'
+}

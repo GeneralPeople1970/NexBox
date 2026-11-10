@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appearance_title">Appearance</string>
+    <string name="appearance_save_failed">Could not save appearance settings. Please try again.</string>
+    <string name="appearance_import_progress">%1$d / %2$d</string>
+    <string name="apk_install_importing">Installing APKs into NexBox…</string>
+    <string name="appearance_ui_style">Interface style</string>
+    <string name="appearance_material3">Material 3</string>
+    <string name="appearance_miuix">Miuix</string>
+    <string name="appearance_theme_mode">Color mode</string>
+    <string name="appearance_theme_system">Follow system</string>
+    <string name="appearance_theme_light">Light</string>
+    <string name="appearance_theme_dark">Dark</string>
+    <string name="appearance_liquid_glass">Floating bottom bar</string>
+    <string name="appearance_predictive_back">Predictive back animation</string>
+    <string name="appearance_open_source_licenses">Open-source licenses</string>
+</resources>

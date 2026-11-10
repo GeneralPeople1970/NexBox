@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Inline settings groups and concise feature descriptions. -->
+    <string name="settings_title">設定</string>
+
+    <string name="settings_category_sandbox">沙盒</string>
+    <string name="settings_category_permission">執行環境</string>
+    <string name="sandbox_device_summary">修改應用程式讀取的裝置資訊</string>
+    <string name="sandbox_location_summary">設定應用程式讀取的位置</string>
+    <string name="sandbox_gms_summary">管理 Google 服務</string>
+    <string name="sandbox_modules_summary">管理模組與作用範圍</string>
+    <string name="sandbox_gallery_summary">管理沙盒內的照片</string>
+    <string name="settings_runtime_summary">隱藏 Root、應用程式凍結等</string>
+    <string name="about_check_updates">檢查更新</string>
+    <string name="about_updates_summary">取得最新版本</string>
+    <string name="about_source_code">查看原始碼</string>
+    <string name="about_source_summary">專案原始碼與版本記錄</string>
+    <string name="about_telegram_group">Telegram 群組</string>
+    <string name="about_telegram_summary">交流使用體驗與建議</string>
+    <string name="about_licenses_summary">第三方元件與授權聲明</string>
+    <string name="feature_not_implemented">尚未實作</string>
+    <string name="config_saved_stop_failed">設定已儲存，但部分應用程式未能停止。請先停止應用程式，再重新開啟以使用新設定。</string>
+    <string name="config_retry_stop">重試停止</string>
+    <string name="runtime_settings_save_failed">無法儲存執行設定</string>
+    <string name="runtime_settings_partial_save">部分設定可能已儲存，請檢查目前值後重試。</string>
+</resources>

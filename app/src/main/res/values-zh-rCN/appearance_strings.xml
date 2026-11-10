@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appearance_title">外观</string>
+    <string name="appearance_save_failed">无法保存外观设置，请重试。</string>
+    <string name="appearance_import_progress">%1$d / %2$d</string>
+    <string name="apk_install_importing">正在安装 APK 至 NexBox…</string>
+    <string name="appearance_ui_style">界面风格</string>
+    <string name="appearance_material3">Material 3</string>
+    <string name="appearance_miuix">Miuix</string>
+    <string name="appearance_theme_mode">颜色模式</string>
+    <string name="appearance_theme_system">跟随系统</string>
+    <string name="appearance_theme_light">浅色</string>
+    <string name="appearance_theme_dark">深色</string>
+    <string name="appearance_liquid_glass">悬浮底栏</string>
+    <string name="appearance_predictive_back">预测性返回动画</string>
+    <string name="appearance_open_source_licenses">开源许可</string>
+</resources>

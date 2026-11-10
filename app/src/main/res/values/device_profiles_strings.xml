@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="device_mode_host">Host build information</string>
+    <string name="device_mode_template">Supplemental build template (unverified)</string>
+    <string name="device_mode_basic">Basic information simulation</string>
+    <string name="device_mode_legacy">Existing saved build information</string>
+    <string name="device_catalog_open">Select device from catalogue</string>
+    <string name="device_catalog_search">Search brand, model or device code</string>
+    <string name="device_catalog_compatible_only">Hide known ABI mismatches</string>
+    <string name="device_catalog_count">%1$d phone candidates</string>
+    <string name="device_catalog_failed">Could not load the device catalogue.</string>
+    <string name="device_catalog_random">Randomize</string>
+    <string name="device_catalog_use">Use this model</string>
+    <string name="device_basic_warning">Basic model information only</string>
+    <string name="device_randomize_ids">Randomize</string>
+    <string name="sim_profile_title">SIM simulation</string>
+    <string name="sim_none">No SIM</string>
+    <string name="sim_single">Single SIM</string>
+    <string name="sim_dual">Dual SIM</string>
+    <string name="sim_card_count">SIM configuration</string>
+    <string name="sim_slot_title">SIM %1$d</string>
+    <string name="sim_home_carrier">Operator</string>
+    <string name="sim_phone">Phone number</string>
+    <string name="sim_profile_invalid">Invalid SIM configuration, phone number or identifiers</string>
+    <string name="sim_random_requires_card">Please choose single or dual SIM</string>
+    <string name="sim_random_field">Randomize %1$s</string>
+    <string name="sim_phone_invalid">Use an international number with this region\'s calling code</string>
+    <string name="sim_imsi_invalid">IMSI must have 14–15 digits and match the selected operator</string>
+    <string name="sim_iccid_invalid">ICCID must have 19–20 digits, match the region, and have a valid check digit</string>
+</resources>

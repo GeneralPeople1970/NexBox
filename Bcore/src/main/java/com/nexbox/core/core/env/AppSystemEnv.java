@@ -1,0 +1,74 @@
+package com.nexbox.core.core.env;
+
+import android.content.ComponentName;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.nexbox.core.NexBoxCore;
+
+
+public class AppSystemEnv {
+    private static final List<String> sSystemPackages = new ArrayList<>();
+    private static final List<String> sSuPackages = new ArrayList<>();
+
+    private static final List<String> sPreInstallPackages = new ArrayList<>();
+
+    static {
+        sSystemPackages.add("android");
+        sSystemPackages.add("com.google.android.webview");
+        sSystemPackages.add("com.google.android.webview.dev");
+        sSystemPackages.add("com.google.android.webview.beta");
+        sSystemPackages.add("com.google.android.webview.canary");
+        sSystemPackages.add("com.android.webview");
+        sSystemPackages.add("com.android.camera");
+        sSystemPackages.add("com.android.talkback");
+        sSystemPackages.add("com.miui.gallery");
+
+        
+        sSystemPackages.add("com.google.android.inputmethod.latin");
+
+        // Samsung Health sign-in falls back to Samsung Account or a browser.
+        sSystemPackages.add("com.osp.app.signin");
+        sSystemPackages.add("com.sec.android.app.sbrowser");
+        sSystemPackages.add("com.android.chrome");
+        
+
+        
+        sSystemPackages.add("com.huawei.webview");
+
+        
+        sSystemPackages.add("com.coloros.safecenter");
+
+        
+        sSuPackages.add("com.noshufou.android.su");
+        sSuPackages.add("com.noshufou.android.su.elite");
+        sSuPackages.add("eu.chainfire.supersu");
+        sSuPackages.add("com.koushikdutta.superuser");
+        sSuPackages.add("com.thirdparty.superuser");
+        sSuPackages.add("com.yellowes.su");
+
+
+
+        
+    }
+
+    public static boolean isOpenPackage(String packageName) {
+        return sSystemPackages.contains(packageName);
+    }
+
+    public static boolean isOpenPackage(ComponentName componentName) {
+        return componentName != null && isOpenPackage(componentName.getPackageName());
+    }
+
+    public static boolean isBlackPackage(String packageName) {
+        if (NexBoxCore.get().isHideRoot() && sSuPackages.contains(packageName)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static List<String> getPreInstallPackages() {
+        return sPreInstallPackages;
+    }
+}

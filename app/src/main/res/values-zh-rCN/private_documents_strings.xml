@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="location_joystick">定位摇杆</string>
+    <string name="private_documents_title">文件</string>
+    <string name="private_documents_root">文档</string>
+    <string name="private_documents_downloads">下载</string>
+    <string name="private_documents_images">图片</string>
+    <string name="private_documents_videos">视频</string>
+    <string name="private_documents_app">应用文件</string>
+    <string name="private_documents_name">文件名</string>
+    <string name="private_documents_failed">无法打开或选择此文件</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="location_current">目前位置</string>
+    <string name="location_cached">上次位置</string>
+    <string name="location_default">預設位置</string>
+    <string name="location_approximate">大概位置</string>
+    <string name="location_saved">已儲存位置</string>
+    <string name="location_locating">正在定位</string>
+    <string name="location_favorites">收藏</string>
+    <string name="location_favorites_empty">尚無收藏</string>
+    <string name="location_favorites_load_failed">收藏載入失敗</string>
+    <string name="location_favorite_add">收藏此處</string>
+    <string name="location_favorite_edit">編輯收藏</string>
+    <string name="location_favorite_edit_named">編輯%1$s</string>
+    <string name="location_favorite_name">名稱</string>
+    <string name="location_favorite_default_name">地點 %1$d</string>
+    <string name="location_favorite_delete">刪除</string>
+    <string name="location_favorite_delete_named">刪除%1$s</string>
+    <string name="location_favorite_delete_confirm">刪除「%1$s」？</string>
+    <string name="location_favorite_save_failed">儲存失敗，請重試</string>
+    <string name="location_save">儲存</string>
+    <string name="location_retry">重試</string>
+</resources>

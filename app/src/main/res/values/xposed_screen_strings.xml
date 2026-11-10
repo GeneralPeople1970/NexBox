@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="xp_installed_empty">No modules yet</string>
+    <string name="xp_group_no_apps">No compatible cloned apps</string>
+    <string name="xp_load_failed_retry">Could not load modules</string>
+    <string name="xp_change_failed">Could not save changes</string>
+</resources>

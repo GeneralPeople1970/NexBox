@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pull_refresh_pull">Pull to refresh</string>
+    <string name="pull_refresh_release">Release to refresh</string>
+    <string name="pull_refresh_loading">Refreshing…</string>
+    <string name="pull_refresh_finished">Refresh complete</string>
+</resources>

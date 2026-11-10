@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <exclude domain="file" path="diagnostics/" />
+    <exclude domain="file" path="crash_logs/" />
+    <exclude domain="file" path="logs/" />
+    <exclude domain="external" path="logs/" />
+</full-backup-content>

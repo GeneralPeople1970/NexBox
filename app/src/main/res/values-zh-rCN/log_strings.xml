@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="logs_title">日志</string>
+    <string name="logs_entry_summary">记录、ADB 与导出</string>
+    <string name="logs_clear">清空日志</string>
+    <string name="logs_export">导出</string>
+    <string name="logs_empty">等待日志</string>
+    <string name="logs_filter_all">全部等级</string>
+    <string name="logs_share_title">分享日志</string>
+    <string name="logs_export_failed">无法导出或分享日志</string>
+    <string name="logs_recording_title">记录日志</string>
+    <string name="logs_adb_title">ADB 输出</string>
+    <string name="logs_detailed_title">详细日志</string>
+    <string name="logs_no_warnings">暂无警告或错误</string>
+    <string name="logs_session_title">本次运行</string>
+    <string name="logs_recording_status">记录中 · %1$d / %2$d 条</string>
+    <string name="logs_stopped_status">记录已关闭 · %1$d / %2$d 条</string>
+    <string name="logs_filter_threshold">%1$s及以上</string>
+    <string name="logs_filter_action">筛选日志等级</string>
+    <string name="logs_level_verbose">详细</string>
+    <string name="logs_level_debug">调试</string>
+    <string name="logs_level_information">信息</string>
+    <string name="logs_level_warning">警告</string>
+    <string name="logs_level_error">错误</string>
+    <string name="logs_filtered_empty">暂无匹配日志</string>
+    <string name="logs_reset_filter">重置筛选</string>
+    <string name="logs_recording_off">日志记录未开启</string>
+    <string name="logs_enable_recording">开启记录</string>
+    <string name="logs_exporting">导出中…</string>
+    <string name="logs_clear_title">清空日志？</string>
+    <string name="logs_clear_message">删除全部日志和本地崩溃记录，无法恢复。</string>
+    <string name="logs_settings_failed">无法保存调试设置</string>
+    <string name="logs_export_diagnostics">导出诊断包</string>
+    <string name="logs_storage_error">日志存储异常：%1$s</string>
+    <string name="logs_search">搜索日志</string>
+    <string name="logs_search_empty">暂无匹配日志</string>
+</resources>

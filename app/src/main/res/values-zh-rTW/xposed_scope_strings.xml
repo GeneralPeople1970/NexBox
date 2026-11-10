@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="xp_open_module_settings">開啟模組管理介面</string>
+    <string name="xp_module_launch_failed">無法開啟模組管理介面，請重新整理後再試。</string>
+    <string name="xp_static_scope_no_clones">此群組尚未複製該模組宣告的作用域應用程式。</string>
+</resources>

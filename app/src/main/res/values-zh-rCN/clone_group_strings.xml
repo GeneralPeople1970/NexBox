@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="clone_action">克隆</string>
+    <string name="clone_success">克隆成功</string>
+    <string name="clone_source_unavailable">应用源文件不可用</string>
+    <string name="clone_sources_unavailable">%1$d 个应用缺少源文件</string>
+    <string name="clone_source_missing">源文件缺失</string>
+    <string name="clone_source_review">查看</string>
+    <string name="clone_source_keep">保留</string>
+    <string name="clone_source_delete">删除</string>
+    <string name="clone_source_restore_hint">请安装原版应用后，重启 NexBox 尝试恢复。</string>
+    <string name="clone_choose_group">选择用户分组</string>
+    <string name="clone_create_group">创建新用户分组</string>
+    <string name="app_action_open">打开应用</string>
+    <string name="app_action_stop">停止应用</string>
+    <string name="app_action_random_device">随机设备</string>
+    <string name="app_action_clear">清除数据</string>
+    <string name="app_action_uninstall">卸载应用</string>
+</resources>

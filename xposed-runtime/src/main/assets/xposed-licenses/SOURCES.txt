@@ -1,0 +1,148 @@
+XP runtime license provenance
+Recorded revisions below identify the vendored runtime subset where its original
+revision is known. License-only revisions are explicitly separate from dependency
+revisions. Re-check the upstream file before updating a revision.
+
+libxposed API 102.0.0
+Artifact: io.github.libxposed:api:102.0.0 (unmodified published AAR)
+Project: https://github.com/libxposed/api
+Artifact and sources: https://repo.maven.apache.org/maven2/io/github/libxposed/api/102.0.0/
+License: Apache-2.0, as declared by the published 102.0.0 POM.
+Bundled text: libxposed-Apache-2.0.txt (standard Apache License, Version 2.0)
+The NexBox adapter implements the published interface; it does not replace API classes with stubs.
+
+libxposed module-app interface 102.0.0
+Artifact: io.github.libxposed:interface:102.0.0 (unmodified published AAR, declared by Bcore)
+Project: https://github.com/libxposed/service, as recorded by the published 102.0.0 POM.
+Artifact: https://repo.maven.apache.org/maven2/io/github/libxposed/interface/102.0.0/
+License: Apache-2.0
+Bundled terms: libxposed-Apache-2.0.txt
+Use: Binder interface between a module app and NexBox's module-app service adapter.
+Protocol reference: https://github.com/LSPosed/LSPosed/wiki/Develop-Xposed-Modules-Using-Modern-Xposed-API
+ModuleAppService cites that protocol; the LSPosed manager/daemon is not bundled.
+The repository URL can be unavailable; the published artifact/POM remains the
+authoritative version and license declaration. This does not import a daemon backend.
+
+XYNXposed
+Project: https://github.com/Katana-Official/XYNXposed
+Commit: ec8b64304ce0652f4714b9f9832222d1522679e7
+License: MIT  (despite the historical "Apache" wording in older notes and in this
+               directory's previous file name)
+Bundled text: XYNXposed-MIT.txt
+Used as the reference for the traditional Xposed API compatibility layer under
+src/main/java/de/robv/android/xposed/. The bridge implementation was rewritten; see the
+comments in XposedBridge for the deliberate differences (stable callback ordering,
+per-invocation hook params, non-native unhook).
+NexBox maintenance (2026-10-12): document the unavoidable Resources constructor,
+Android 12/13 Serializable getter and legacy Commons varargs-array compatibility
+diagnostics with narrowly scoped annotations; no public API or dependency update.
+
+XposedBridge and Apache Commons Lang lineage
+Projects: https://github.com/rovo89/XposedBridge
+          https://github.com/apache/commons-lang
+Related source-note projects: https://github.com/spring-projects/spring-framework
+                              https://github.com/apache/axis-axis1-java
+Local subset: src/main/java/external/org/apache/commons/lang3/ (24 files)
+The XYNXposed compatibility tree carries the original Xposed/Commons API lineage;
+the retained Commons sources contain ASF headers and expanded 2011 source revisions.
+NexBox modified ArrayUtils.java, ObjectUtils.java and StringUtils.java with per-file
+change notices; the other retained source headers remain unchanged.
+Licenses: Apache-2.0 for XposedBridge and Commons source portions, independent of
+XYNXposed's MIT license for its own work.
+Bundled texts: APACHE-COMMONS-LANG-LICENSE.txt, APACHE-COMMONS-LANG-NOTICE.txt,
+               XPOSED-BRIDGE-NOTICE.txt
+Commons legal-text revision: 915946c9dcc80a6a16745b86540b82b2ddba1720 (LANG_3_1)
+XposedBridge legal-text revision: a535c02ed9dfd53683cc0274d9f95bcb6ffb9f79
+Legal-text URLs: https://raw.githubusercontent.com/apache/commons-lang/915946c9dcc80a6a16745b86540b82b2ddba1720/LICENSE.txt
+                 https://raw.githubusercontent.com/apache/commons-lang/915946c9dcc80a6a16745b86540b82b2ddba1720/NOTICE.txt
+                 https://raw.githubusercontent.com/rovo89/XposedBridge/a535c02ed9dfd53683cc0274d9f95bcb6ffb9f79/NOTICE.txt
+These revisions identify the copied legal texts, not a newly asserted source import.
+The Commons NOTICE retains the Spring Framework attribution for containsWhitespace();
+builder/IDKey.java also retains its Apache Axis source note. No Spring or Axis binary
+dependency is added.
+
+LSPlant
+Project: https://github.com/LSPosed/LSPlant
+Commit: d8b5d1dbb664abc606644036822e4bb64547edf6
+License: LGPL-3.0
+Bundled text: LSPlant-LGPL-3.0.txt
+Vendored at src/main/cpp/third_party/lsplant/ and built as the shared library liblsplant.so
+(LSPLANT_BUILD_SHARED=ON) so the LGPL library stays replaceable.
+NexBox modifications (2026-09-21): added ArtMethod::Size() and GetClassInitializer() to
+reflect an ART class initializer without running it first. The extension uses the method
+stride discovered by LSPlant and JNI access to Class.methods/Executable fields. Modified
+source is included alongside the shared library build, under the same LGPL-3.0 license.
+NexBox modifications (2026-10-11): replaced GNU string-literal operator templates with
+standard structural template arguments. The symbol helper retains the existing FixedString
+type identity, and the trampoline helper retains literal bytes and lengths. Modified and
+added sources remain under the same LGPL-3.0 license; the upstream revision is unchanged.
+
+DexBuilder
+Project: https://github.com/LSPosed/DexBuilder
+Commit: ac7fb2230954ee311808bad469b0db501f31bfb8
+License: LGPL-3.0
+Bundled text: DexBuilder-LGPL-3.0.txt
+Vendored under lsplant/external/dex_builder/ and linked statically into liblsplant.so.
+The root LICENSE declares LGPL-3.0, but dex_builder.cc and include/dex_builder.h at
+this same revision retain AGPL-3.0-or-later headers and additional AOSP Apache-2.0
+notices. The root statement alone does not resolve that upstream inconsistency.
+Those headers remain unchanged; DexBuilder-AGPL-3.0.txt is retained as well.
+The applicable license for these portions needs clarification from upstream before
+claiming the whole component is solely LGPL-3.0. No relicensing is performed here.
+
+Android dex Slicer and SHA-1 subset
+Project: https://android.googlesource.com/platform/tools/dexter
+Vendored paths: dex_builder/slicer/ and dex_builder/include/slicer/
+Copyright: The Android Open Source Project (2017/2019 per retained source headers).
+License: Apache-2.0 for the Slicer sources; Apache terms are also bundled in
+APACHE-COMMONS-LANG-LICENSE.txt and parallel-hashmap-Apache-2.0.txt.
+slicer/sha1.cpp and include/slicer/sha1.h retain Steve Reid's "100% Public Domain"
+notice; their source note mentions the Valgrind tests. Preserve that notice rather
+than assigning the surrounding DexBuilder license to the SHA-1 implementation.
+
+parallel-hashmap
+Project: https://github.com/greg7mdp/parallel-hashmap
+Commit: 0cd57d29a959256ed66b2afdd1009928fc625d09
+License: Apache-2.0
+Bundled text: parallel-hashmap-Apache-2.0.txt
+Vendored under lsplant/external/dex_builder/external/parallel_hashmap/. Built only as a
+dependency of DexBuilder. Its website, benchmarks, tests, examples and CI files are omitted;
+the parent CMake project explicitly sets PHMAP_BUILD_TESTS and PHMAP_BUILD_EXAMPLES to off.
+
+xDL
+Project: https://github.com/hexhacking/xDL
+License: MIT
+Bundled text: xDL-MIT.txt
+License source: https://github.com/hexhacking/xDL/blob/117e4f4d73d45fd4d9b178818a81e0f8ed7f9b8e/LICENSE
+License retrieved and verified: 2026-10-12. This is a license-file revision, not a
+claim that the vendored source matches that revision; its original revision was
+not recorded and remains unknown.
+This tree carries a copy of the xDL sources already vendored in Bcore with one NexBox
+addition: nexbox_xdl_sym_prefix() in xdl.c/xdl.h, a strict starts-with resolver used for
+LSPlant's art_symbol_prefix_resolver. The bundled license covers the source copies
+linked by both native modules; no source update accompanied the license repair.
+
+Dobby
+Source: Bcore/src/main/cpp/Dobby/<abi>/libdobby.a (prebuilt static archive, reused by this
+module). Project: https://github.com/jmpews/Dobby
+License: Apache-2.0
+Bundled text: Dobby-Apache-2.0.txt
+License source: https://github.com/jmpews/Dobby/blob/400ad4f2384cccb680f855b4f349cdf24f96a501/LICENSE
+License retrieved and verified: 2026-10-12. The archive's original upstream revision
+was not recorded and remains unknown; this license-file revision does not identify
+the archive build. No binary or dependency was replaced.
+
+HookEuicc reference
+Project: https://github.com/Unicorn369/HookEuicc
+Use: EuiccSpoofer's DownloadableSubscription/eSIM interception-point reference.
+NexBox's hook/clipboard implementation is maintained locally; the upstream app/SDK
+is not declared as a dependency. Upstream revision inspected: f88310807f4605a0bbc4679a3f421d25f5e2e2f0.
+That tree has no LICENSE or NOTICE file. No Apache/MIT authorization is asserted
+for upstream source; copied code would require a separate license/permission check.
+
+GNU license completeness
+The LGPL-3.0 copies for LSPlant/DexBuilder incorporate GPL-3.0 terms; GPL-3.0.txt
+is retained alongside them. The conflicting DexBuilder headers additionally refer
+to DexBuilder-AGPL-3.0.txt. Texts: https://www.gnu.org/licenses/gpl-3.0.txt and
+https://www.gnu.org/licenses/agpl-3.0.txt, retrieved 2026-10-16.
+New legal texts are retained with LF and final-newline normalization only.

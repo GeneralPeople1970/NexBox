@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="account_choose_title">Choose account</string>
+    <string name="account_choose_message">Choose an account for %1$s</string>
+    <string name="account_grant_message">Allow %1$s to use the selected account?</string>
+    <string name="account_request_expired">This request is no longer available. Go back and try again.</string>
+</resources>

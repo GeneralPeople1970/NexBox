@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navigate_back">返回</string>
+    <string name="app_list_permission_required_title">需要讀取應用程式清單權限</string>
+    <string name="app_list_permission_check_title">未讀取到可克隆的應用程式</string>
+    <string name="app_list_permission_settings">檢查應用程式權限</string>
+    <string name="app_list_permission_settings_unavailable">無法開啟權限設定，請在系統設定中找到 NexBox 並檢查「讀取應用程式清單」。</string>
+    <string name="app_search_open">搜尋應用程式</string>
+    <string name="app_search_close">關閉搜尋</string>
+    <string name="install_not_confirmed">安裝未完成，或目標克隆已無法使用。請重新整理後再試。</string>
+    <string name="fake_location_operation_failed">定位操作未完成，請重試</string>
+    <string name="map_tile_source">地圖圖源</string>
+    <string name="map_source_osm_de">OpenStreetMap.de</string>
+    <string name="map_source_osm">OpenStreetMap.org</string>
+    <string name="map_source_custom">自訂</string>
+    <string name="map_source_help">HTTPS XYZ · WGS-84 · {z}/{x}/{y}</string>
+    <string name="map_source_url">圖磚網址</string>
+    <string name="map_source_attribution">圖源署名</string>
+    <string name="map_source_invalid">圖源網址或署名無效</string>
+    <string name="map_source_save_failed">無法儲存圖源，請重試。</string>
+    <string name="map_tiles_unavailable">地圖載入失敗</string>
+    <string name="map_tiles_retry">重試</string>
+</resources>

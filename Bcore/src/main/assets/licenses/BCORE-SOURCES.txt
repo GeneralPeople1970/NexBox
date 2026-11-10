@@ -1,0 +1,92 @@
+NexBox core source and data provenance
+Recorded: 2026-10-16
+Rechecked and extended: 2026-11-08 (source/configuration and upstream text only)
+
+Virtualization framework lineage
+Projects: https://github.com/Black00Z/Blacks-BlackBox
+          https://github.com/ALEX5402/NewBlackbox
+          https://github.com/asLody/VirtualApp
+          https://github.com/didi/VirtualAPK
+Bcore retains and adapts the BlackBox framework lineage, including its Android mirror
+declarations and package/service virtualization. The current root and BlackBox/VirtualAPK
+repositories provide Apache-2.0 notices. Original import revisions and any historical
+VirtualApp license terms cannot be inferred from today's repository metadata; the
+project credits are preserved without declaring a new license for that historical code.
+NexBox's root Apache LICENSE and app's Apache license copies are distributed with the
+project. Android/AIDL descendants retain their existing AOSP source headers.
+
+Random device model catalog
+Project: https://github.com/hossain-khan/android-device-catalog-parser
+Contributor: hossain-khan
+Upstream snapshot: 72f794d6869dfb76ed6432249de17244727686d9
+Path: catalog-data/android-devices-catalog.json
+Upstream URL: https://raw.githubusercontent.com/hossain-khan/android-device-catalog-parser/72f794d6869dfb76ed6432249de17244727686d9/catalog-data/android-devices-catalog.json
+Upstream SHA-256: bd4a29ad2c229936ef4605517d079e670e1b39e1c737ec27c85df39b9a8813b3
+Bundled path: device-catalog/android-devices-catalog.json
+Bundled SHA-256: 4aa3f0297d3d5f0fcae8aae4fc4c954c63951caf67beb43395080464c7e8b1fa
+Records: 23,727 (13,971 Phone records)
+Upstream export date: 2026-08-13T10:56:49Z
+Modification: JSON whitespace compression only; complete record content is preserved.
+The user-provided source hash matches this upstream snapshot exactly.
+Repository license: Apache-2.0
+License: ANDROID-DEVICE-CATALOG-APACHE-2.0.txt
+License URL: https://raw.githubusercontent.com/hossain-khan/android-device-catalog-parser/72f794d6869dfb76ed6432249de17244727686d9/LICENSE
+The upstream catalog metadata states that the data comes from Google Play Console.
+Google's underlying catalog redistribution terms and firmware accuracy have not been
+independently established by this source-match audit. The parser implementation/SDK
+is not imported or linked. Additional structured provenance is in device-catalog/source.json.
+
+SandHook ELF utility lineage
+Project: https://github.com/asLody/SandHook
+Original source author: Swift Gan (upstream source header: 2019/3/14)
+Local files: Bcore/src/main/cpp/Utils/elf_util.cpp and elf_util.h
+Use: ELF symbol resolution for libart in hidden_api.cpp.
+The files descend through the BlackBox/NewBlackbox tree from SandHook's ElfImg helper;
+they retain its namespace, member layout, symbol lookup and section-table logic with
+later extensions. The exact original source revision was not recorded.
+Original upstream paths: hooklib/src/main/cpp/utils/elf_util.cpp
+                         hooklib/src/main/cpp/includes/elf_util.h
+Upstream license: Anti 996 License Version 1.0 (Draft)
+License-only revision: 16a59fa0eef011ca202814311b362a8a3bcda412
+License URL: https://raw.githubusercontent.com/asLody/SandHook/16a59fa0eef011ca202814311b362a8a3bcda412/LICENSE.txt
+Bundled license: SANDHOOK-ANTI-996.txt
+The license-only revision is not a claim that these modified files are byte-identical
+to that checkout. The root Apache license does not replace SandHook's separate terms.
+
+Dobby and xDL
+Projects: https://github.com/jmpews/Dobby (Apache-2.0)
+          https://github.com/hexhacking/xDL (MIT)
+Local paths: Bcore/src/main/cpp/Dobby/<abi>/libdobby.a and Bcore/src/main/cpp/xdl/
+The app also includes :xposed-runtime, whose xposed-licenses/ directory contains the
+Dobby-Apache-2.0.txt and xDL-MIT.txt copies and the known/unknown revision details.
+No binary or dependency update accompanies this attribution repair.
+
+Android NDK / LLVM C++ runtime and compiler support
+Project: https://github.com/llvm/llvm-project
+Android downstream: https://android.googlesource.com/toolchain/llvm-project
+Configured NDK: 29.0.14206865 (r29), declared by Bcore and xposed-runtime.
+Bcore selects c++_static; xposed-runtime selects c++_shared. The corresponding
+libc++, libc++abi, libunwind and compiler-rt terms are retained below, including
+LLVM exceptions and the component-specific third-party / legacy notices.
+Local NDK manifest_13989888.xml records LLVM revision:
+5e96669f06077099aa41290cdb4c5e6fa0f59349
+Upstream license paths: libcxx/LICENSE.TXT, libcxxabi/LICENSE.TXT,
+                        libunwind/LICENSE.TXT, compiler-rt/LICENSE.TXT
+URL prefix: https://android.googlesource.com/toolchain/llvm-project/+/5e96669f06077099aa41290cdb4c5e6fa0f59349/
+Append ?format=TEXT to retrieve the original base64-encoded text.
+Bundled texts: ANDROID-NDK-R29-LIBCXX-LICENSE.txt,
+               ANDROID-NDK-R29-LIBCXXABI-LICENSE.txt,
+               ANDROID-NDK-R29-LIBUNWIND-LICENSE.txt,
+               ANDROID-NDK-R29-COMPILER-RT-LICENSE.txt
+This records the configured runtime/toolchain provenance, not the unknown toolchain
+used for the historical prebuilt Dobby archives. No build or binary replacement ran.
+Android's log/android/z platform libraries are system links in the native CMake
+targets, not separately vendored copies of their implementations.
+
+Reflection and OEM protocol references
+BlackReflection, FreeReflection, AndroidHiddenApiBypass and Android_CN_OAID are
+described in app assets licenses/SOURCES.txt. The OAID protocol reference supplies
+interface/URI conventions; the upstream SDK is not bundled.
+
+License texts in this directory preserve upstream contents with LF and one final
+newline. Data and source provenance changes do not modify runtime behavior.

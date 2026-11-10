@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <provider
+            android:name=".debug.DebugCommandProvider"
+            android:authorities="${applicationId}.debug"
+            android:exported="true"
+            android:grantUriPermissions="false" />
+        <!-- Exercises the real core process/relay without creating or launching a guest. -->
+        <service android:name=".util.DiagnosticProbeService" android:exported="false" android:process="@string/nexbox_service_process" />
+    </application>
+</manifest>

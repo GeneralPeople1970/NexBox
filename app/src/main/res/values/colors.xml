@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- XML 窗口配色与 ui/theme/Color.kt 保持同步。 -->
+<resources>
+    <color name="primary">#0061A4</color>
+    <color name="primary_dark">#00497D</color>
+    <color name="primary_light">#535F70</color>
+    <color name="primary_text">#001F2A</color>
+    <color name="secondary_text">#43474E</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background">#F8FDFF</color>
+    <color name="surface">#F8FDFF</color>
+    <color name="surface_variant">#E6E8EE</color>
+    <color name="on_surface">#001F2A</color>
+</resources>

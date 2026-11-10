@@ -1,0 +1,4 @@
+<resources>
+    <string name="xp_enable_named">启用 %s</string>
+    <string name="xp_static_scope">此模块仅允许选择开发者声明的目标应用。</string>
+</resources>

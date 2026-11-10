@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="device_more_parameters">More parameters</string>
+    <string name="device_brand">Brand</string>
+    <string name="device_code">Device code</string>
+    <string name="device_product">Product</string>
+    <string name="device_fingerprint">Build fingerprint</string>
+    <string name="device_serial">Serial number</string>
+    <string name="device_mac">MAC address</string>
+    <string name="device_invalid_serial">Enter a valid serial number</string>
+    <string name="device_invalid_imei">Enter a valid 15-digit IMEI</string>
+    <string name="device_invalid_mac">Enter a valid MAC address</string>
+    <string name="device_invalid_oaid">Enter a valid OAID</string>
+    <string name="device_profile_load_failed">Could not load device settings</string>
+    <string name="device_profile_save_failed">Could not save changes</string>
+    <string name="device_profile_random_failed">Could not randomize parameters</string>
+    <string name="device_profile_retry">Retry</string>
+    <string name="device_unsaved_title">Save changes?</string>
+    <string name="device_save_and_leave">Save and return</string>
+    <string name="device_discard_changes">Discard changes</string>
+</resources>

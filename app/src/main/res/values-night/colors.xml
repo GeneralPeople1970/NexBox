@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  XML 侧调色板（深色）—— 必须与 ui/theme/Color.kt 保持同步修改。
+  参见 values/colors.xml 顶部说明。
+-->
+<resources>
+    <color name="primary">#9ECAFF</color>
+    <color name="primary_dark">#003258</color>
+    <color name="primary_light">#BBC7DB</color>
+    <color name="primary_text">#BFE8FF</color>
+    <color name="secondary_text">#C3C6CF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background">#001F2A</color>
+    <color name="surface">#001F2A</color>
+    <color name="surface_variant">#102F3B</color>
+    <color name="on_surface">#BFE8FF</color>
+</resources>

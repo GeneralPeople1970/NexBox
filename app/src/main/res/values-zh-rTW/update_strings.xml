@@ -1,0 +1,25 @@
+<resources>
+    <string name="update_auto_check">自動檢查更新</string>
+    <string name="update_auto_check_summary">開啟應用程式時檢查，每天最多一次</string>
+    <string name="update_current_version">目前版本</string>
+    <string name="update_checking">正在檢查…</string>
+    <string name="update_not_checked">點擊檢查更新取得最新版本</string>
+    <string name="update_available">發現新版本 %1$s</string>
+    <string name="update_up_to_date">已是最新版本</string>
+    <string name="update_last_checked">上次檢查成功：%1$s</string>
+    <string name="update_error_network">連線失敗，請檢查網路後重試。</string>
+    <string name="update_error_unavailable">暫時無法取得更新資訊，請稍後重試。</string>
+    <string name="update_error_rate_limited">請求過於頻繁，請稍後重試。</string>
+    <string name="update_error_no_release">暫無正式版本。</string>
+    <string name="update_error_response">無法讀取更新資訊，請稍後重試。</string>
+    <string name="update_error_current_version">無法識別目前版本。</string>
+    <string name="update_error_storage">更新資訊儲存失敗，請重試。</string>
+    <string name="update_history">歷史更新日誌</string>
+    <string name="update_history_empty">暫無更新日誌</string>
+    <string name="update_notes_empty">暫無版本說明</string>
+    <string name="update_view_release">查看發佈頁面</string>
+    <string name="update_expand_notes">展開更新日誌</string>
+    <string name="update_collapse_notes">收起更新日誌</string>
+    <string name="update_setting_failed">更新設定儲存失敗</string>
+    <string name="update_browser_failed">無法開啟瀏覽器</string>
+</resources>

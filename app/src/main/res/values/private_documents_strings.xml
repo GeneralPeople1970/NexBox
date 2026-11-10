@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="location_joystick">Location joystick</string>
+    <string name="private_documents_title">Files</string>
+    <string name="private_documents_root">Documents</string>
+    <string name="private_documents_downloads">Downloads</string>
+    <string name="private_documents_images">Images</string>
+    <string name="private_documents_videos">Videos</string>
+    <string name="private_documents_app">App files</string>
+    <string name="private_documents_name">File name</string>
+    <string name="private_documents_failed">Unable to open or select this file</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nexbox_user_display_name">使用者 %d</string>
+    <string name="app_icon">預設圖示</string>
+    <string name="nexbox_core_channel_name">核心服務</string>
+    <string name="nexbox_core_channel_description">維持 NexBox 服務執行</string>
+    <string name="nexbox_core_notification_title">NexBox</string>
+    <string name="nexbox_core_notification_running">核心服務正在執行</string>
+    <string name="nexbox_vpn_channel_name">VPN 服務</string>
+    <string name="nexbox_vpn_channel_description">為 NexBox 應用程式提供網路存取</string>
+    <string name="nexbox_vpn_notification_title">NexBox VPN 已啟用</string>
+    <string name="nexbox_vpn_notification_running">正在管理沙盒應用程式的網路存取</string>
+    <string name="nexbox_vpn_session">NexBox 網路存取</string>
+</resources>

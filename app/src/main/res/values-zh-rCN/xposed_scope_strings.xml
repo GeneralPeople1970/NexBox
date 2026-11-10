@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="xp_open_module_settings">打开模块管理界面</string>
+    <string name="xp_module_launch_failed">无法打开模块管理界面，请刷新后重试。</string>
+    <string name="xp_static_scope_no_clones">此分组尚未克隆该模块声明的作用域应用。</string>
+</resources>

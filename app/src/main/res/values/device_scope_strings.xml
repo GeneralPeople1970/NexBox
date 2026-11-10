@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="device_manufacturer_label">Device manufacturer</string>
+    <string name="device_model_label">Device model</string>
+    <string name="device_sim_cards">SIM cards</string>
+    <string name="device_random_scope">Random device scope</string>
+    <string name="device_profile_independent">Independent</string>
+    <string name="device_esim_setting_failed">Could not update eSIM setting</string>
+    <string name="device_scope_load_failed">Could not load device scope</string>
+    <string name="device_scope_save_failed">Could not save device scope</string>
+</resources>

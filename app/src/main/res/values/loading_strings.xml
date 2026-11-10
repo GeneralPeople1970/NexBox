@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="operation_in_progress">Working…</string>
+    <string name="updating_named">Updating %1$s</string>
+</resources>

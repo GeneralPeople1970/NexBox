@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="location_enable_simulation">Enable simulation</string>
+    <string name="location_disable_simulation">Disable simulation</string>
+    <string name="location_update_position">Update location</string>
+    <string name="location_more">More location options</string>
+    <string name="location_scope_title">Location scope</string>
+    <string name="location_scope_required_title">No apps selected</string>
+    <string name="location_scope_load_failed">Could not load location scope</string>
+    <string name="location_scope_save_failed">Could not save location scope</string>
+    <string name="location_app_independent">Independent</string>
+    <string name="location_app_inherited">From group</string>
+    <string name="location_app_outside_scope">Outside scope</string>
+    <string name="location_save_position">Save location</string>
+</resources>

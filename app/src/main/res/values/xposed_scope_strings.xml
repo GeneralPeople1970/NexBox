@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="xp_open_module_settings">Open module management</string>
+    <string name="xp_module_launch_failed">Could not open module management. Refresh and try again.</string>
+    <string name="xp_static_scope_no_clones">None of this module’s declared target apps have been cloned into this group.</string>
+</resources>

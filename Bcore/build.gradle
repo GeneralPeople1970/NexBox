@@ -1,0 +1,127 @@
+plugins {
+    id 'com.android.library'
+    id 'com.android.legacy-kapt'
+}
+
+android {
+    namespace = 'com.nexbox.core'
+
+    compileSdk = rootProject.ext.compileSdkVersion
+    ndkVersion = '29.0.14206865'
+    aidlPackagedList.addAll([
+            'android/app/IServiceConnection.aidl',
+            'android/accounts/IAccountManagerResponse.aidl'
+    ])
+    buildFeatures {
+        aidl = true
+        prefab = true
+    }
+    defaultConfig {
+        minSdk = rootProject.ext.minSdk
+
+        consumerProguardFiles "consumer-rules.pro", "core-retention.pro"
+        ndk {
+            abiFilters.addAll(rootProject.ext.nexboxAbis)
+        }
+        externalNativeBuild {
+            cmake {
+                arguments.addAll(['-DANDROID_STL=c++_static',
+                                  '-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON'])
+                targets.add('nexbox')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled = true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro', 'core-retention.pro'
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path = file('src/main/cpp/CMakeLists.txt')
+            version = '3.31.6'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+    tasks.withType(JavaCompile) {
+        options.compilerArgs.addAll(['-Xlint:deprecation', '-Xlint:unchecked', '-Xlint:rawtypes'])
+        options.fork = true
+        options.forkOptions.jvmArgs << "-Xmx2048m"
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+        warningsAsErrors = false
+        disable.addAll(['UnusedResources', 'RestrictedApi'])
+        textReport = false
+        checkOnly.addAll(['NewApi', 'InlinedApi'])
+    }
+}
+
+androidComponents {
+    beforeVariants(selector().all()) { variantBuilder ->
+        variantBuilder.enableUnitTest = true
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+    }
+}
+
+kapt {
+    // Java mirror declarations still produce JavaPoet sources, before Kotlin consumes them.
+    correctErrorTypes = true
+}
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+
+// AIDL embeds Windows paths in Java comments. Clean at the producer so kapt and
+// javac both see valid source (a backslash followed by u starts a Unicode escape).
+tasks.matching { it.name.startsWith('compile') && it.name.endsWith('Aidl') }.configureEach { task ->
+    task.doLast {
+        task.outputs.files.asFileTree.matching { include '**/*.java' }.each { file ->
+            def text = file.getText('UTF-8')
+            if (text.contains("* Using:")) {
+                def cleaned = text.replaceAll("\\* Using:.*", "* Using: [cleaned for windows]")
+                if (cleaned != text) file.setText(cleaned, 'UTF-8')
+            }
+        }
+    }
+}
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation(project(":nexbox-reflection"))
+    // BActivityThread is the only place that drives the guest-side XP runtime, so the
+    // dependency lives here; :app picks the native libs up transitively.
+    implementation project(':xposed-runtime')
+    // The module-app Binder ABI is distinct from the code-injection API. Keep the official ABI.
+    implementation 'io.github.libxposed:interface:102.0.0'
+    kapt(project(":compiler"))
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+
+    implementation 'com.github.tiann:FreeReflection:3.2.2'
+    implementation "org.lsposed.hiddenapibypass:hiddenapibypass:${rootProject.ext.hiddenApiBypass}"
+}

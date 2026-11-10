@@ -1,0 +1,4 @@
+<resources>
+    <string name="xp_enable_named">Enable %s</string>
+    <string name="xp_static_scope">This module limits its scope to the apps declared by its developer.</string>
+</resources>

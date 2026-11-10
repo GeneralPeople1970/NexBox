@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_picker_more">更多选项</string>
+    <string name="app_picker_preferences_failed">无法保存列表偏好，请重试。</string>
+    <string name="app_picker_sort">排序方式</string>
+    <string name="app_picker_sort_name">应用名称</string>
+    <string name="app_picker_sort_package">包名</string>
+    <string name="app_picker_sort_size">安装包大小</string>
+    <string name="app_picker_sort_first_install">首次安装时间</string>
+    <string name="app_picker_sort_last_update">最后更新时间</string>
+    <string name="app_picker_reverse">倒序</string>
+    <string name="app_picker_show_package">显示包名</string>
+    <string name="app_picker_show_system">显示系统应用</string>
+    <string name="app_list_permission_request">允许获取应用列表</string>
+    <string name="app_list_permission_request_failed">无法发起权限申请，请打开权限设置后重试。</string>
+</resources>

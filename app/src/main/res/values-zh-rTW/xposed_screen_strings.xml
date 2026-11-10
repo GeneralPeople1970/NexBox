@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="xp_installed_empty">尚無模組</string>
+    <string name="xp_group_no_apps">尚無可用的克隆應用程式</string>
+    <string name="xp_load_failed_retry">模組載入失敗</string>
+    <string name="xp_change_failed">儲存失敗</string>
+</resources>

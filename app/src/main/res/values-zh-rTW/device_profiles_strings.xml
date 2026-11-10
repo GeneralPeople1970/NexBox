@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="device_mode_host">宿主裝置資訊</string>
+    <string name="device_mode_template">附加機型範本（未經實機驗證）</string>
+    <string name="device_mode_basic">基本資訊模擬</string>
+    <string name="device_mode_legacy">既有裝置資訊</string>
+    <string name="device_catalog_open">從機型目錄選擇</string>
+    <string name="device_catalog_search">搜尋品牌、型號或裝置代號</string>
+    <string name="device_catalog_compatible_only">排除已知不相容的 ABI</string>
+    <string name="device_catalog_count">%1$d 個手機候選</string>
+    <string name="device_catalog_failed">無法載入機型目錄。</string>
+    <string name="device_catalog_random">隨機選擇</string>
+    <string name="device_catalog_use">使用此機型</string>
+    <string name="device_basic_warning">僅模擬基本機型資訊</string>
+    <string name="device_randomize_ids">一鍵隨機</string>
+    <string name="sim_profile_title">SIM 模擬</string>
+    <string name="sim_none">無卡</string>
+    <string name="sim_single">單卡</string>
+    <string name="sim_dual">雙卡</string>
+    <string name="sim_card_count">SIM 設定</string>
+    <string name="sim_slot_title">卡槽 %1$d</string>
+    <string name="sim_home_carrier">業者</string>
+    <string name="sim_phone">手機號碼</string>
+    <string name="sim_profile_invalid">SIM 設定、手機號碼或識別碼無效</string>
+    <string name="sim_random_requires_card">請選擇單卡或雙卡</string>
+    <string name="sim_random_field">隨機產生%1$s</string>
+    <string name="sim_phone_invalid">請輸入含有目前地區區碼的國際號碼</string>
+    <string name="sim_imsi_invalid">IMSI 須為 14–15 位數字，且與所選業者相符</string>
+    <string name="sim_iccid_invalid">ICCID 須為 19–20 位數字，地區與檢查碼須正確</string>
+</resources>

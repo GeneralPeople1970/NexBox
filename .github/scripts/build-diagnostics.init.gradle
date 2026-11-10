@@ -1,0 +1,8 @@
+gradle.projectsEvaluated {
+    gradle.rootProject.allprojects { project ->
+        project.tasks.withType(org.gradle.api.tasks.compile.JavaCompile).configureEach { task ->
+            task.options.incremental = false
+            task.options.compilerArgs.addAll(['-Xmaxwarns', '10000', '-Xlint:deprecation', '-Xlint:unchecked'])
+        }
+    }
+}

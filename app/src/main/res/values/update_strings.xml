@@ -1,0 +1,25 @@
+<resources>
+    <string name="update_auto_check">Automatically check for updates</string>
+    <string name="update_auto_check_summary">Check when opening the app, at most once a day</string>
+    <string name="update_current_version">Current version</string>
+    <string name="update_checking">Checking…</string>
+    <string name="update_not_checked">Tap Check for updates to get the latest version</string>
+    <string name="update_available">New version available: %1$s</string>
+    <string name="update_up_to_date">You are up to date</string>
+    <string name="update_last_checked">Last successful check: %1$s</string>
+    <string name="update_error_network">Unable to connect. Check your network and try again.</string>
+    <string name="update_error_unavailable">Update information is unavailable. Please try again later.</string>
+    <string name="update_error_rate_limited">Too many requests. Please try again later.</string>
+    <string name="update_error_no_release">No official releases are available yet.</string>
+    <string name="update_error_response">Unable to read update information. Please try again later.</string>
+    <string name="update_error_current_version">Unable to identify the current version.</string>
+    <string name="update_error_storage">Unable to save update information. Please try again.</string>
+    <string name="update_history">Release history</string>
+    <string name="update_history_empty">No release history yet</string>
+    <string name="update_notes_empty">No release notes</string>
+    <string name="update_view_release">View release</string>
+    <string name="update_expand_notes">Expand release notes</string>
+    <string name="update_collapse_notes">Collapse release notes</string>
+    <string name="update_setting_failed">Unable to save the update setting</string>
+    <string name="update_browser_failed">Unable to open a browser</string>
+</resources>

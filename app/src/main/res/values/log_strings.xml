@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="logs_title">Logs</string>
+    <string name="logs_entry_summary">Recording, ADB and exports</string>
+    <string name="logs_clear">Clear logs</string>
+    <string name="logs_export">Export</string>
+    <string name="logs_empty">Waiting for logs</string>
+    <string name="logs_filter_all">All levels</string>
+    <string name="logs_share_title">Share logs</string>
+    <string name="logs_export_failed">Could not export or share logs</string>
+    <string name="logs_recording_title">Record logs</string>
+    <string name="logs_adb_title">ADB output</string>
+    <string name="logs_detailed_title">Detailed logs</string>
+    <string name="logs_no_warnings">No warnings or errors</string>
+    <string name="logs_session_title">Session logs</string>
+    <string name="logs_recording_status">Recording · %1$d / %2$d</string>
+    <string name="logs_stopped_status">Recording off · %1$d / %2$d</string>
+    <string name="logs_filter_threshold">%1$s and above</string>
+    <string name="logs_filter_action">Filter log level</string>
+    <string name="logs_level_verbose">Verbose</string>
+    <string name="logs_level_debug">Debug</string>
+    <string name="logs_level_information">Information</string>
+    <string name="logs_level_warning">Warning</string>
+    <string name="logs_level_error">Error</string>
+    <string name="logs_filtered_empty">No matching logs</string>
+    <string name="logs_reset_filter">Reset filters</string>
+    <string name="logs_recording_off">Recording is off</string>
+    <string name="logs_enable_recording">Enable recording</string>
+    <string name="logs_exporting">Exporting…</string>
+    <string name="logs_clear_title">Clear logs?</string>
+    <string name="logs_clear_message">Deletes all logs and local crash records. This cannot be undone.</string>
+    <string name="logs_settings_failed">Could not save debugging settings</string>
+    <string name="logs_export_diagnostics">Export diagnostics</string>
+    <string name="logs_storage_error">Storage error: %1$s</string>
+    <string name="logs_search">Search logs</string>
+    <string name="logs_search_empty">No matching logs</string>
+</resources>
